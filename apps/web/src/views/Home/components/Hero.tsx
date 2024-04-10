@@ -266,8 +266,8 @@ const Hero = () => {
           mb={['24px', null, null, '0']}
           position="relative"
         >
-          <BunnyWrapper>
-            <CakeBox>
+          {/* <BunnyWrapper> */}
+          {/* <CakeBox>
               <CakeCanvas
                 className={isIOS || isMobile ? 'is-ios' : undefined}
                 width={isIOS || isMobile ? 500 : width}
@@ -297,7 +297,7 @@ const Hero = () => {
                 </VideoWrapper>
               )}
             </CakeBox>
-          </BunnyWrapper>
+          </BunnyWrapper> */}
         </Flex>
       </Flex>
     </>

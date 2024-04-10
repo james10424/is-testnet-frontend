@@ -21,12 +21,9 @@ import Head from 'next/head'
 import Script from 'next/script'
 import { Fragment } from 'react'
 import { PersistGate } from 'redux-persist/integration/react'
-import { V4CakeIcon } from 'views/Home/components/V4CakeIcon'
-import { VercelToolbar } from 'components/VercelToolbar'
 
 import { useDataDogRUM } from 'hooks/useDataDogRUM'
 import { useLoadExperimentalFeatures } from 'hooks/useExperimentalFeatureEnabled'
-import { useVercelFeatureFlagOverrides } from 'hooks/useVercelToolbar'
 import { useInitGlobalWorker } from 'hooks/useWorker'
 import { persistor, useStore } from 'state'
 import { usePollBlockNumber } from 'state/block/hooks'
@@ -48,7 +45,6 @@ function GlobalHooks() {
   useInitGlobalWorker()
   useDataDogRUM()
   useLoadExperimentalFeatures()
-  useVercelFeatureFlagOverrides()
   usePollBlockNumber()
   useEagerConnect()
   useUserAgent()
@@ -168,15 +164,14 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
           <Component {...pageProps} />
         </Layout>
       </ShowMenu>
-      <EasterEgg iterations={2} />
+      {/* <EasterEgg iterations={2} /> */}
       <ToastListener />
       <FixedSubgraphHealthIndicator />
       <NetworkModal pageSupportedChains={Component.chains} />
       <TransactionsDetailModal />
       {isShowScrollToTopButton && <ScrollToTopButtonV2 />}
       {shouldScreenWallet && <Blocklist />}
-      {isShowV4IconButton && <V4CakeIcon />}
-      <VercelToolbar />
+      {/* {isShowV4IconButton && <V4CakeIcon />} */}
     </ProductionErrorBoundary>
   )
 }

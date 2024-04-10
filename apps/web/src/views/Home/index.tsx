@@ -1,24 +1,7 @@
 import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, PageSection, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { Box, PageSection, useMatchBreakpoints } from '@pancakeswap/uikit'
 import useTheme from 'hooks/useTheme'
 import { styled } from 'styled-components'
-import MultipleBanner from './components/Banners/MultipleBanner'
-import CakeDataRow from './components/CakeDataRow'
-import CakeSection from './components/CakeSection'
-import CommunitySection from './components/CommunitySection'
-import { RightTopBox } from './components/CommunitySection/ImagesOnBg'
-import EcoSystemSection from './components/EcoSystemSection'
-import Footer from './components/Footer'
-import Hero from './components/Hero'
-import MetricsSection from './components/MetricsSection'
-import { NewsSection } from './components/NewsSection'
-import {
-  InnerWedgeWrapper,
-  OuterWedgeWrapper,
-  WedgeBottomRight,
-  WedgeTopLeft,
-  WedgeTopRight,
-} from './components/WedgeSvgs'
 
 const StyledHeroSection = styled(PageSection)`
   padding-top: 16px;
@@ -71,105 +54,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
           }
         `}
       </style>
-      <StyledHeroSection
-        innerProps={{ style: { margin: '0', width: '100%', overflow: 'visible', padding: '16px' } }}
-        containerProps={{
-          id: 'home-1',
-        }}
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <MultipleBanner />
-        <Hero />
-      </StyledHeroSection>
-      <PageSection
-        innerProps={{ style: { margin: '0', width: '100%' } }}
-        containerProps={{
-          id: 'home-2',
-        }}
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <MetricsSection />
-      </PageSection>
-      <PageSection
-        innerProps={{ style: { ...HomeSectionContainerStyles, maxWidth: 'auto' } }}
-        background={theme.colors.background}
-        containerProps={{
-          id: 'home-4',
-        }}
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <OuterWedgeWrapper>
-          <InnerWedgeWrapper top>
-            <WedgeTopLeft />
-          </InnerWedgeWrapper>
-        </OuterWedgeWrapper>
-        <EcoSystemSection />
-      </PageSection>
-      <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.background}
-        containerProps={{
-          id: 'home4-2',
-        }}
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <OuterWedgeWrapper>
-          <InnerWedgeWrapper width="150%" top>
-            <WedgeTopRight />
-          </InnerWedgeWrapper>
-        </OuterWedgeWrapper>
-        <CakeSection />
-        <Flex style={{ gap: 5 }} justifyContent="center" mt="40px">
-          <Text fontSize={24} bold>
-            {t('CAKE')}
-          </Text>
-          <Text fontSize={24} bold color="secondary">
-            {t('Figures')}
-          </Text>
-        </Flex>
-        <CakeDataRow />
-        <OuterWedgeWrapper>
-          <InnerWedgeWrapper id="bottom-wedge4-2">
-            <WedgeBottomRight />
-          </InnerWedgeWrapper>
-        </OuterWedgeWrapper>
-      </PageSection>
-      <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        containerProps={{
-          id: 'home-3',
-        }}
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <RightTopBox />
-        <CommunitySection />
-      </PageSection>
-      <PageSection
-        innerProps={{
-          style: {
-            ...HomeSectionContainerStyles,
-            maxWidth: '1400px',
-          },
-        }}
-        background={theme.colors.background}
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <NewsSection />
-      </PageSection>
-      <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        background="linear-gradient(180deg, #7645D9 0%, #5121B1 100%)"
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <Footer />
-      </PageSection>
+      <div>Everything coming soon</div>
     </Box>
   )
 }
