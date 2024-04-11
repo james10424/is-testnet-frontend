@@ -32,6 +32,7 @@ import { ExpertModal } from '@pancakeswap/widgets-internal'
 import { TOKEN_RISK } from 'components/AccessRisk'
 import AccessRiskTooltips from 'components/AccessRisk/AccessRiskTooltips'
 import { useActiveChainId } from 'hooks/useActiveChainId'
+import { useSpeedQuote } from 'hooks/useSpeedQuote'
 import useTheme from 'hooks/useTheme'
 import { useWebNotifications } from 'hooks/useWebNotifications'
 import { ReactNode, Suspense, lazy, useCallback, useState } from 'react'
@@ -40,7 +41,6 @@ import { useSubgraphHealthIndicatorManager, useUserUsernameVisibility } from 'st
 import { useUserShowTestnet } from 'state/user/hooks/useUserShowTestnet'
 import { useUserTokenRisk } from 'state/user/hooks/useUserTokenRisk'
 import { useMMLinkedPoolByDefault } from 'state/user/mmLinkedPool'
-import { useSpeedQuote } from 'hooks/useSpeedQuote'
 import {
   useOnlyOneAMMSourceEnabled,
   useRoutingSettingChanged,
@@ -256,7 +256,7 @@ const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>> = ({ 
               </Flex>
               <TransactionSettings />
             </Flex>
-            <Flex justifyContent="space-between" alignItems="center" mb="24px">
+            {/* <Flex justifyContent="space-between" alignItems="center" mb="24px">
               <Flex alignItems="center">
                 <Text>{t('Expert Mode')}</Text>
                 <QuestionHelper
@@ -304,7 +304,7 @@ const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>> = ({ 
                 scale="md"
               />
             </Flex>
-            <RoutingSettingsButton />
+            <RoutingSettingsButton /> */}
           </>
         )}
       </ScrollableContainer>

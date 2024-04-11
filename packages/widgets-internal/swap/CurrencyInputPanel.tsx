@@ -1,4 +1,4 @@
-import { Text, AtomBox, SwapCSS } from "@pancakeswap/uikit";
+import { AtomBox, SwapCSS, Text } from "@pancakeswap/uikit";
 
 import { NumericalInput, NumericalInputProps } from "./NumericalInput";
 
@@ -31,8 +31,10 @@ export function CurrencyInputPanel({
         flexDirection="column"
         flexWrap="nowrap"
         position="relative"
-        backgroundColor="backgroundAlt"
+        // backgroundColor="backgroundAlt"
         zIndex="1"
+        // border="1"
+        // borderRadius="20px"
       >
         <AtomBox
           as="label"

@@ -56,8 +56,9 @@ export const PancakeSwapTheme = {
     palette: {
       mode: 'dark',
       primary: {
-        main: '#1EC7D3',
-        contrastText: '#191326',
+        // main: '#1EC7D3',
+        main: '#BC42FF',
+        contrastText: '#FFFFF',
         light: '#1EC7D3',
       },
       secondary: {

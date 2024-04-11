@@ -33,7 +33,7 @@ const config: (
       fillIcon: SwapFillIcon,
       href: '/swap',
       showItemsOnMobile: false,
-      items: [],
+      // items: [],
       //   {
       //     label: t('Swap'),
       //     href: '/swap',
@@ -82,38 +82,38 @@ const config: (
       fillIcon: EarnFillIcon,
       image: '/images/decorations/pe2.png',
       supportChainIds: SUPPORT_FARMS,
-      items: [
-        // {
-        //   label: t('Farms'),
-        //   href: '/farms',
-        //   supportChainIds: SUPPORT_FARMS,
-        // },
-        // {
-        //   label: t('CAKE Staking'),
-        //   href: '/cake-staking',
-        //   supportChainIds: SUPPORT_CAKE_STAKING,
-        // },
-        // {
-        //   label: t('Pools'),
-        //   href: '/pools',
-        //   supportChainIds: POOL_SUPPORTED_CHAINS,
-        // },
-        // {
-        //   label: t('Position Manager'),
-        //   href: '/position-managers',
-        //   supportChainIds: POSITION_MANAGERS_SUPPORTED_CHAINS,
-        // },
-        // {
-        //   label: t('Liquid Staking'),
-        //   href: '/liquid-staking',
-        //   supportChainIds: LIQUID_STAKING_SUPPORTED_CHAINS,
-        // },
-        // {
-        //   label: t('Simple Staking'),
-        //   href: '/simple-staking',
-        //   supportChainIds: FIXED_STAKING_SUPPORTED_CHAINS,
-        // },
-      ].map((item) => addMenuItemSupported(item, chainId)),
+      // items: [
+      //   // {
+      //   //   label: t('Farms'),
+      //   //   href: '/farms',
+      //   //   supportChainIds: SUPPORT_FARMS,
+      //   // },
+      //   // {
+      //   //   label: t('CAKE Staking'),
+      //   //   href: '/cake-staking',
+      //   //   supportChainIds: SUPPORT_CAKE_STAKING,
+      //   // },
+      //   // {
+      //   //   label: t('Pools'),
+      //   //   href: '/pools',
+      //   //   supportChainIds: POOL_SUPPORTED_CHAINS,
+      //   // },
+      //   // {
+      //   //   label: t('Position Manager'),
+      //   //   href: '/position-managers',
+      //   //   supportChainIds: POSITION_MANAGERS_SUPPORTED_CHAINS,
+      //   // },
+      //   // {
+      //   //   label: t('Liquid Staking'),
+      //   //   href: '/liquid-staking',
+      //   //   supportChainIds: LIQUID_STAKING_SUPPORTED_CHAINS,
+      //   // },
+      //   // {
+      //   //   label: t('Simple Staking'),
+      //   //   href: '/simple-staking',
+      //   //   supportChainIds: FIXED_STAKING_SUPPORTED_CHAINS,
+      //   // },
+      // ].map((item) => addMenuItemSupported(item, chainId)),
     },
     // {
     //   label: t('Game'),

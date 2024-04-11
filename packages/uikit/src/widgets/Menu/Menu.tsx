@@ -19,6 +19,7 @@ const Wrapper = styled.div`
   grid-template-rows: auto 1fr;
 `;
 
+//   border-bottom: 1px solid ${({ theme }) => theme.colors.cardBorder};
 const StyledNav = styled.nav`
   display: flex;
   justify-content: space-between;
@@ -26,7 +27,6 @@ const StyledNav = styled.nav`
   width: 100%;
   height: ${MENU_HEIGHT}px;
   background-color: ${({ theme }) => theme.nav.background};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.cardBorder};
   transform: translate3d(0, 0, 0);
 
   padding-left: 16px;
