@@ -20,7 +20,6 @@ import { useNetworkConnectorUpdater } from 'hooks/useActiveWeb3React'
 import { useHover } from 'hooks/useHover'
 import { useSessionChainId } from 'hooks/useSessionChainId'
 import { useSwitchNetwork } from 'hooks/useSwitchNetwork'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useMemo } from 'react'
 import { useUserShowTestnet } from 'state/user/hooks/useUserShowTestnet'
@@ -37,7 +36,7 @@ const AptosChain = {
 const NetworkSelect = ({ switchNetwork, chainId }) => {
   const { t } = useTranslation()
   const [showTestnet] = useUserShowTestnet()
-
+  const supported = [11155111, 280, 421614, 59140, 84532]
   return (
     <>
       <Box px="16px" py="8px">
@@ -46,11 +45,12 @@ const NetworkSelect = ({ switchNetwork, chainId }) => {
       <UserMenuDivider />
       {chains
         .filter((chain) => {
-          if (chain.id === chainId) return true
-          if ('testnet' in chain && chain.testnet) {
+          // if (chain.id === chainId) return true
+          if ('testnet' in chain && chain.testnet && supported.includes(chain.id)) {
             return showTestnet
           }
-          return true
+          return false
+          // return true
         })
         .map((chain) => (
           <UserMenuItem
@@ -64,7 +64,7 @@ const NetworkSelect = ({ switchNetwork, chainId }) => {
             </Text>
           </UserMenuItem>
         ))}
-      <UserMenuItem
+      {/* <UserMenuItem
         key={`aptos-${AptosChain.id}`}
         style={{ justifyContent: 'flex-start' }}
         as="a"
@@ -81,7 +81,7 @@ const NetworkSelect = ({ switchNetwork, chainId }) => {
         <Text color="text" pl="12px">
           {AptosChain.name}
         </Text>
-      </UserMenuItem>
+      </UserMenuItem> */}
     </>
   )
 }

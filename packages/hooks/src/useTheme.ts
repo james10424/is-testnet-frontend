@@ -1,7 +1,7 @@
-import { useContext, useCallback, useMemo } from 'react'
 import Cookie from 'js-cookie'
-import { ThemeContext as StyledThemeContext } from 'styled-components'
 import { useTheme as useNextTheme } from 'next-themes'
+import { useCallback, useContext, useMemo } from 'react'
+import { ThemeContext as StyledThemeContext } from 'styled-components'
 
 export const COOKIE_THEME_KEY = 'theme'
 export const THEME_DOMAIN = '.pancakeswap.finance'
@@ -23,9 +23,13 @@ const useTheme = () => {
   )
 
   return useMemo(
-    () => ({ isDark: resolvedTheme === 'dark', theme, setTheme: handleSwitchTheme }),
+    () => ({ isDark: true, theme, setTheme: handleSwitchTheme }),
     [theme, resolvedTheme, handleSwitchTheme],
   )
+  // return useMemo(
+  //   () => ({ isDark: resolvedTheme === 'dark', theme, setTheme: handleSwitchTheme }),
+  //   [theme, resolvedTheme, handleSwitchTheme],
+  // )
 }
 
 export default useTheme
