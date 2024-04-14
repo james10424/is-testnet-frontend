@@ -86,7 +86,11 @@ export function V3SubmitButton({
       </Button>
     )
   } else if (!account) {
-    buttons = <ConnectWalletButton width="100%" />
+    buttons = (
+      <ConnectWalletButton
+      // width="100%"
+      />
+    )
   } else if (isWrongNetwork) {
     buttons = <CommitButton />
   } else {
@@ -124,5 +128,5 @@ export function V3SubmitButton({
     )
   }
 
-  return buttons
+  return <div style={{ display: 'flex', justifyContent: 'center', marginTop: '28px' }}>{buttons}</div>
 }

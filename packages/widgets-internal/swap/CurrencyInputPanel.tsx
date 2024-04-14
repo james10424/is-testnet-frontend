@@ -42,6 +42,7 @@ export function CurrencyInputPanel({
             showBridgeWarning: !!showBridgeWarning,
             error: Boolean(error),
           })}
+          style={{ backgroundColor: "#17153A", borderTopLeftRadius: "15px", borderTopRightRadius: "15px" }}
         >
           <AtomBox
             display="flex"
@@ -52,6 +53,7 @@ export function CurrencyInputPanel({
             lineHeight="16px"
             px="16px"
             pt="12px"
+            // style={{ backgroundColor: "#17153A", borderTopLeftRadius: "15px", borderTopRightRadius: "15px" }}
           >
             <NumericalInput
               error={Boolean(error)}

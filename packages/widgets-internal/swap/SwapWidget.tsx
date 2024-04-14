@@ -10,26 +10,28 @@ import { TradePrice } from "./TradePrice";
 
 const SwitchIconButton = styled(IconButton)`
   box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.1);
+  background-color: ${({ theme }) => theme.colors.primary};
   .icon-up-down {
     display: none;
+    fill: white;
+  }
+  .icon-down {
+    fill: white;
   }
   &:hover {
-    background-color: ${({ theme }) => theme.colors.primary};
     .icon-down {
       display: none;
-      fill: white;
     }
     .icon-up-down {
       display: block;
-      fill: white;
     }
   }
 `;
 
 const SwitchButton = (props: ButtonProps) => (
   <SwitchIconButton variant="light" scale="sm" {...props}>
-    <ArrowDownIcon className="icon-down" color="primary" />
-    <ArrowUpDownIcon className="icon-up-down" color="primary" />
+    <ArrowDownIcon style={{ height: "20px" }} className="icon-down" color="primary" />
+    <ArrowUpDownIcon style={{ height: "24px" }} className="icon-up-down" color="primary" />
   </SwitchIconButton>
 );
 

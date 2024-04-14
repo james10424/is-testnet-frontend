@@ -92,7 +92,7 @@ export default function RangeSelector({
         incrementDisabled={ticksAtLimit[isSorted ? Bound.LOWER : Bound.UPPER]}
         feeAmount={feeAmount}
         label={leftPrice ? `${currencyB?.symbol}` : '-'}
-        title={t('Min Price')}
+        title={t('Low Price')}
         tokenA={currencyA}
         tokenB={currencyB}
       />
@@ -108,7 +108,7 @@ export default function RangeSelector({
         label={rightPrice ? `${currencyB?.symbol}` : '-'}
         tokenA={currencyA}
         tokenB={currencyB}
-        title={t('Max Price')}
+        title={t('High Price')}
       />
     </FlexGap>
   )

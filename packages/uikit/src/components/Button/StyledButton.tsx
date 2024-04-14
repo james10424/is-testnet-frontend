@@ -1,5 +1,5 @@
-import { styled, DefaultTheme, css } from "styled-components";
-import { space, layout, variant } from "styled-system";
+import { DefaultTheme, css, styled } from "styled-components";
+import { layout, space, variant } from "styled-system";
 import { scaleVariants, styleVariants } from "./theme";
 import { BaseButtonProps } from "./types";
 
@@ -49,13 +49,13 @@ const StyledButton = styled("button").withConfig({
   position: relative;
   align-items: center;
   border: 0;
-  border-radius: 16px;
+  border-radius: 6px;
   box-shadow: 0px -1px 0px 0px rgba(14, 14, 44, 0.4) inset;
   cursor: pointer;
   display: inline-flex;
   font-family: inherit;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   justify-content: center;
   letter-spacing: 0.03em;
   line-height: 1;

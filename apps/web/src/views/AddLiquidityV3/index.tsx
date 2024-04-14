@@ -2,17 +2,7 @@ import { CurrencySelect } from 'components/CurrencySelect'
 import { CommonBasesType } from 'components/SearchModal/types'
 
 import { Currency, NATIVE, WNATIVE } from '@pancakeswap/sdk'
-import {
-  AddIcon,
-  AutoColumn,
-  Card,
-  CardBody,
-  DynamicSection,
-  FlexGap,
-  IconButton,
-  PreTitle,
-  RefreshIcon,
-} from '@pancakeswap/uikit'
+import { AddIcon, AutoColumn, Card, CardBody, DynamicSection, FlexGap, PreTitle } from '@pancakeswap/uikit'
 
 import { FeeAmount } from '@pancakeswap/v3-sdk'
 import React, { ReactNode, useCallback, useEffect, useMemo } from 'react'
@@ -33,20 +23,19 @@ import AddStableLiquidity from 'views/AddLiquidity/AddStableLiquidity'
 import useStableConfig, { StableConfigContext } from 'views/Swap/hooks/useStableConfig'
 
 import { useActiveChainId } from 'hooks/useActiveChainId'
-import noop from 'lodash/noop'
 import { resetMintState } from 'state/mint/actions'
 import { useAddLiquidityV2FormDispatch } from 'state/mint/reducer'
 import { useStableSwapPairs } from 'state/swap/useStableSwapPairs'
 import { safeGetAddress } from 'utils'
 import FeeSelector from './formViews/V3FormView/components/FeeSelector'
 
-import { AprCalculator } from './components/AprCalculator'
 import { StableV3Selector } from './components/StableV3Selector'
 import { V2Selector } from './components/V2Selector'
 import StableFormView from './formViews/StableFormView'
 import V2FormView from './formViews/V2FormView'
 import V3FormView from './formViews/V3FormView'
 import { useCurrencyParams } from './hooks/useCurrencyParams'
+import SubmitBtn from './SubmitBtn'
 import { HandleFeePoolSelectFn, SELECTOR_TYPE } from './types'
 
 export const BodyWrapper = styled(Card)`
@@ -54,6 +43,7 @@ export const BodyWrapper = styled(Card)`
   max-width: 858px;
   width: 100%;
   z-index: 1;
+  padding: 0;
 `
 
 /* two-column layout where DepositAmount is moved at the very end on mobile. */
@@ -283,10 +273,10 @@ export function UniversalAddLiquidity({
 
   return (
     <>
-      <CardBody>
+      <CardBody style={{ backgroundColor: '#23204E' }}>
         <ResponsiveTwoColumns>
           <AutoColumn alignSelf="stretch">
-            <PreTitle mb="8px">{t('Choose Token Pair')}</PreTitle>
+            <PreTitle mb="8px">{t('Select Pair')}</PreTitle>
             <FlexGap gap="4px" width="100%" mb="8px" alignItems="center">
               <CurrencySelect
                 id="add-liquidity-select-tokena"
@@ -365,6 +355,13 @@ export function UniversalAddLiquidity({
           )}
         </ResponsiveTwoColumns>
       </CardBody>
+      <SubmitBtn
+        feeAmount={feeAmount}
+        baseCurrency={baseCurrency}
+        quoteCurrency={quoteCurrency}
+        currencyIdA={currencyIdA}
+        currencyIdB={currencyIdB}
+      />
     </>
   )
 }
@@ -419,23 +416,30 @@ export function AddLiquidityV3Layout({
         <AppHeader
           title={title}
           backTo={backToLink}
-          IconSlot={
-            <>
-              {selectType === SELECTOR_TYPE.V3 && (
-                <AprCalculator
-                  showQuestion
-                  baseCurrency={baseCurrency}
-                  quoteCurrency={quoteCurrency}
-                  feeAmount={feeAmount}
-                />
-              )}
-              {showRefreshButton && (
-                <IconButton variant="text" scale="sm">
-                  <RefreshIcon onClick={handleRefresh || noop} color="textSubtle" height={24} width={24} />
-                </IconButton>
-              )}
-            </>
+          center={
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+              <div style={{ fontSize: 35, fontWeight: 600 }}>Add Pools</div>
+              <div>Search and find the best asset</div>
+            </div>
           }
+          borderHidden
+          // IconSlot={
+          //   <>
+          //     {selectType === SELECTOR_TYPE.V3 && (
+          //       <AprCalculator
+          //         showQuestion
+          //         baseCurrency={baseCurrency}
+          //         quoteCurrency={quoteCurrency}
+          //         feeAmount={feeAmount}
+          //       />
+          //     )}
+          //     {showRefreshButton && (
+          //       <IconButton variant="text" scale="sm">
+          //         <RefreshIcon onClick={handleRefresh || noop} color="textSubtle" height={24} width={24} />
+          //       </IconButton>
+          //     )}
+          //   </>
+          // }
         />
         {children}
       </BodyWrapper>

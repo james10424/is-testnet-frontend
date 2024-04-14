@@ -169,6 +169,29 @@ export default function FeeSelector({
   }, [feeAmount, isPending, isError, largestUsageFeeTier, handleFeePoolSelect, v2PairHasBetterTokenAmounts, farmV3])
 
   return (
+    <SelectContainer>
+      {FEE_TIERS.map((_feeAmount) => {
+        const { supportedChains } = FEE_AMOUNT_DETAIL[_feeAmount]
+        if (chainId && supportedChains.includes(chainId)) {
+          return (
+            <FeeOption
+              isLoading={isPending}
+              largestUsageFeeTier={largestUsageFeeTier}
+              feeAmount={_feeAmount}
+              active={feeAmount === _feeAmount}
+              onClick={() => handleFeePoolSelect({ type: SELECTOR_TYPE.V3, feeAmount: _feeAmount })}
+              distributions={distributions}
+              poolState={poolsByFeeTier[_feeAmount]}
+              key={_feeAmount}
+            />
+          )
+        }
+        return null
+      })}
+    </SelectContainer>
+  )
+
+  return (
     <HideShowSelectorSection
       showOptions={showOptions || (!v2PairHasBetterTokenAmounts && isError)}
       noHideButton={!feeAmount}

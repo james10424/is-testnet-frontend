@@ -1,17 +1,17 @@
-import { styled, css } from 'styled-components'
 import {
-  Text,
+  ArrowBackIcon,
+  AutoRow,
   Flex,
   Heading,
   IconButton,
-  ArrowBackIcon,
   NotificationDot,
   QuestionHelper,
-  AutoRow,
+  Text,
 } from '@pancakeswap/uikit'
 import { useExpertMode } from '@pancakeswap/utils/user'
 import GlobalSettings from 'components/Menu/GlobalSettings'
 import Link from 'next/link'
+import { styled } from 'styled-components'
 import { SettingsMode } from '../Menu/GlobalSettings/types'
 
 interface Props {
@@ -25,20 +25,21 @@ interface Props {
   filter?: React.ReactNode
   shouldCenter?: boolean
   borderHidden?: boolean
+  center?: string | React.ReactNode
 }
 
+// border-bottom: 1px solid ${({ theme }) => theme.colors.cardBorder};
+// ${({ borderHidden }) =>
+// borderHidden &&
+// css`
+//   border-bottom: 1px solid transparent;
+// `}
 const AppHeaderContainer = styled(Flex)<{ borderHidden?: boolean }>`
   align-items: center;
   justify-content: space-between;
   padding: 24px;
   width: 100%;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.cardBorder};
-
-  ${({ borderHidden }) =>
-    borderHidden &&
-    css`
-      border-bottom: 1px solid transparent;
-    `}
+  border: 0;
 `
 
 const FilterSection = styled(AutoRow)`
@@ -50,6 +51,7 @@ const FilterSection = styled(AutoRow)`
 const AppHeader: React.FC<React.PropsWithChildren<Props>> = ({
   title,
   subtitle,
+  center,
   helper,
   backTo,
   noConfig = false,
@@ -64,26 +66,31 @@ const AppHeader: React.FC<React.PropsWithChildren<Props>> = ({
   return (
     <AppHeaderContainer borderHidden={borderHidden}>
       <Flex alignItems="center" width="100%" style={{ gap: '16px' }}>
-        {backTo &&
-          (typeof backTo === 'string' ? (
-            <Link legacyBehavior passHref href={backTo}>
-              <IconButton as="a" scale="sm">
-                <ArrowBackIcon width="32px" />
-              </IconButton>
-            </Link>
-          ) : (
-            <IconButton scale="sm" variant="text" onClick={backTo}>
-              <ArrowBackIcon width="32px" />
-            </IconButton>
-          ))}
         <Flex pr={backTo && shouldCenter ? '48px' : ''} flexDirection="column" width="100%" marginTop="4px">
-          <Flex mb="8px" alignItems="center" flexWrap="wrap" justifyContent="space-between" style={{ gap: '16px' }}>
-            <Flex flex={1} justifyContent={shouldCenter ? 'center' : ''}>
+          <Flex mb="8px" alignItems="center" flexWrap="wrap" justifyContent="center" style={{ gap: '16px' }}>
+            <div
+              // flex={1}
+              // justifyContent={shouldCenter ? 'center' : ''}
+              style={{ position: 'absolute', left: 0, display: 'flex', alignItems: 'center' }}
+            >
+              {backTo &&
+                (typeof backTo === 'string' ? (
+                  <Link legacyBehavior passHref href={backTo}>
+                    <IconButton as="a" scale="sm">
+                      <ArrowBackIcon width="32px" />
+                    </IconButton>
+                  </Link>
+                ) : (
+                  <IconButton scale="sm" variant="text" onClick={backTo}>
+                    <ArrowBackIcon width="32px" />
+                  </IconButton>
+                ))}
               {typeof title === 'string' ? <Heading as="h2">{title}</Heading> : title}
               {helper && <QuestionHelper text={helper} ml="4px" placement="top" />}
-            </Flex>
+            </div>
+            <Flex>{center}</Flex>
             {!noConfig && (
-              <Flex alignItems="flex-end">
+              <Flex alignItems="flex-end" style={{ position: 'absolute', right: '0' }}>
                 {IconSlot}
                 <NotificationDot show={expertMode}>
                   <GlobalSettings mode={SettingsMode.SWAP_LIQUIDITY} />

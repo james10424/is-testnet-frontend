@@ -561,7 +561,7 @@ export default function V3FormView({
           />
         </LockedDeposit>
       </DynamicSection>
-      <HideMedium>{buttons}</HideMedium>
+      {/* <HideMedium>{buttons}</HideMedium> */}
 
       <RightContainer>
         <AutoColumn gap="16px">
@@ -630,15 +630,23 @@ export default function V3FormView({
                     <Text fontWeight={500} textAlign="center" fontSize={12} color="text1">
                       {t('Current Price')}:
                     </Text>
-                    <Text fontWeight={500} textAlign="center" fontSize={12} color="text1">
+                    <Text fontWeight={500} textAlign="center" fontSize={12} color="#BC42FF">
                       {invertPrice ? price.invert().toSignificant(6) : price.toSignificant(6)}
                     </Text>
-                    <Text color="text2" fontSize={12}>
-                      {t('%assetA% per %assetB%', {
+                    <div style={{ display: 'flex' }}>
+                      <Text color="#BC42FF" fontSize={12}>
+                        {quoteCurrency?.symbol}
+                      </Text>
+                      <Text color="text2" fontSize={12}>
+                        &nbsp; = 1 {baseCurrency.symbol}
+                      </Text>
+                    </div>
+                    {/* <Text color="text2" fontSize={12}>
+                      {t('%assetA% = %assetB%', {
                         assetA: quoteCurrency?.symbol ?? '',
                         assetB: baseCurrency.symbol ?? '',
                       })}
-                    </Text>
+                    </Text> */}
                   </AutoRow>
                 )}
                 <LiquidityChartRangeInput
@@ -725,7 +733,7 @@ export default function V3FormView({
                           variant={+quickAction === activeQuickAction ? 'primary' : 'secondary'}
                           scale="sm"
                         >
-                          {quickAction}%
+                          ±{quickAction}%
                         </Button>
                       )
                     })}
@@ -767,7 +775,7 @@ export default function V3FormView({
               </Message>
             ) : null}
           </DynamicSection>
-          <MediumOnly>{buttons}</MediumOnly>
+          {/* <MediumOnly>{buttons}</MediumOnly> */}
         </AutoColumn>
       </RightContainer>
     </>

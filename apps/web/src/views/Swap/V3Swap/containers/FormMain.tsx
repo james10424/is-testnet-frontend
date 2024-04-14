@@ -151,8 +151,8 @@ export function FormMain({ pricingAndSlippage, inputAmount, outputAmount, tradeL
       />
       <RiskCheck currency={outputCurrency ?? undefined} />
       <Recipient />
-      {pricingAndSlippage}
       {swapCommitButton}
+      {pricingAndSlippage}
     </FormContainer>
   )
 }

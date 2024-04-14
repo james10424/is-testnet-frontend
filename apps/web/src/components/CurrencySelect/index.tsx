@@ -18,19 +18,19 @@ const DropDownHeader = styled.div`
   justify-content: space-between;
   padding: 0px 16px;
   box-shadow: ${({ theme }) => theme.shadows.inset};
-  border: 1px solid ${({ theme }) => theme.colors.inputSecondary};
-  border-radius: 16px;
-  background: ${({ theme }) => theme.colors.input};
+  border-radius: 12px;
+  background: #17153a;
   transition: border-radius 0.15s;
 `
+// border: 1px solid ${({ theme }) => theme.colors.inputSecondary};
 
 const DropDownContainer = styled(Button)`
   cursor: pointer;
   width: 100%;
   position: relative;
-  background: ${({ theme }) => theme.colors.input};
-  border-radius: 16px;
-  height: 40px;
+  background: #17153a;
+  border-radius: 12px;
+  height: 56px;
   min-width: 136px;
   user-select: none;
   z-index: 20;
