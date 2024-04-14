@@ -36,8 +36,8 @@ const InputRow = styled.div<{ selected: boolean }>`
   flex-flow: row nowrap;
   align-items: center;
   justify-content: flex-end;
-  padding: ${({ selected }) => (selected ? '0.75rem 0.5rem 0.75rem 1rem' : '0.75rem 0.75rem 0.75rem 1rem')};
 `
+// padding: ${({ selected }) => (selected ? '0.75rem 0.5rem 0.75rem 1rem' : '0.75rem 0.75rem 0.75rem 1rem')};
 const CurrencySelectButton = styled(Button).attrs({ variant: 'text', scale: 'sm' })`
   padding: 0px;
 `
@@ -174,42 +174,7 @@ const CurrencyInputPanel = memo(function CurrencyInputPanel({
           {title}
           <Flex alignItems="center">
             {beforeButton}
-            <CurrencySelectButton
-              className="open-currency-select-button"
-              data-dd-action-name="Select currency"
-              selected={!!currency}
-              onClick={onCurrencySelectClick}
-            >
-              <Flex alignItems="center" justifyContent="space-between">
-                {pair ? (
-                  <DoubleCurrencyLogo currency0={pair.token0} currency1={pair.token1} size={16} margin />
-                ) : currency ? (
-                  id === 'onramp-input' ? (
-                    <FiatLogo currency={currency} size="24px" style={{ marginRight: '8px' }} />
-                  ) : (
-                    <CurrencyLogo currency={currency} size="24px" style={{ marginRight: '8px' }} />
-                  )
-                ) : currencyLoading ? (
-                  <Skeleton width="24px" height="24px" variant="circle" />
-                ) : null}
-                {currencyLoading ? null : pair ? (
-                  <Text id="pair" bold>
-                    {pair?.token0.symbol}:{pair?.token1.symbol}
-                  </Text>
-                ) : (
-                  <Text id="pair" bold>
-                    {(currency && currency.symbol && currency.symbol.length > 10
-                      ? `${currency.symbol.slice(0, 4)}...${currency.symbol.slice(
-                          currency.symbol.length - 5,
-                          currency.symbol.length,
-                        )}`
-                      : currency?.symbol) || t('Select a currency')}
-                  </Text>
-                )}
-                {!currencyLoading && !disableCurrencySelect && <ArrowDropDownIcon />}
-              </Flex>
-            </CurrencySelectButton>
-            {token && tokenAddress ? (
+            {/* {token && tokenAddress ? (
               <Flex style={{ gap: '4px' }} ml="4px" alignItems="center">
                 <CopyButton
                   data-dd-action-name="Copy token address"
@@ -230,7 +195,7 @@ const CurrencyInputPanel = memo(function CurrencyInputPanel({
                   tokenLogo={token instanceof WrappedTokenInfo ? token.logoURI : undefined}
                 />
               </Flex>
-            ) : null}
+            ) : null} */}
             {token && tokenAddress && (token.equals(bscTokens.insp) || token.equals(ethereumTokens.insp)) ? (
               <LinkExternal
                 ml="4px"
@@ -244,7 +209,7 @@ const CurrencyInputPanel = memo(function CurrencyInputPanel({
             ) : null}
           </Flex>
 
-          {account && !hideBalanceComp && (
+          {/* {account && !hideBalanceComp && (
             <Text
               data-dd-action-name="Token balance"
               onClick={!disabled ? onMax : undefined}
@@ -260,12 +225,49 @@ const CurrencyInputPanel = memo(function CurrencyInputPanel({
                   : t('Balance: %balance%', { balance: balance ?? t('Loading') })
                 : ' -'}
             </Text>
-          )}
+          )} */}
         </>
+      }
+      currencySelect={
+        <CurrencySelectButton
+          className="open-currency-select-button"
+          data-dd-action-name="Select currency"
+          selected={!!currency}
+          onClick={onCurrencySelectClick}
+        >
+          <Flex alignItems="center" justifyContent="space-between">
+            {pair ? (
+              <DoubleCurrencyLogo currency0={pair.token0} currency1={pair.token1} size={16} margin />
+            ) : currency ? (
+              id === 'onramp-input' ? (
+                <FiatLogo currency={currency} size="24px" style={{ marginRight: '8px' }} />
+              ) : (
+                <CurrencyLogo currency={currency} size="24px" style={{ marginRight: '8px' }} />
+              )
+            ) : currencyLoading ? (
+              <Skeleton width="24px" height="24px" variant="circle" />
+            ) : null}
+            {currencyLoading ? null : pair ? (
+              <Text id="pair" bold>
+                {pair?.token0.symbol}:{pair?.token1.symbol}
+              </Text>
+            ) : (
+              <Text id="pair" bold>
+                {(currency && currency.symbol && currency.symbol.length > 10
+                  ? `${currency.symbol.slice(0, 4)}...${currency.symbol.slice(
+                      currency.symbol.length - 5,
+                      currency.symbol.length,
+                    )}`
+                  : currency?.symbol) || t('Select a currency')}
+              </Text>
+            )}
+            {!currencyLoading && !disableCurrencySelect && <ArrowDropDownIcon />}
+          </Flex>
+        </CurrencySelectButton>
       }
       bottom={
         <>
-          {!!showUSDPrice && (
+          {/* {!!showUSDPrice && (
             <Flex justifyContent="flex-end" mr="1rem">
               <Flex maxWidth="200px">
                 {inputLoading ? (
@@ -279,7 +281,31 @@ const CurrencyInputPanel = memo(function CurrencyInputPanel({
                 )}
               </Flex>
             </Flex>
-          )}
+          )} */}
+          <div
+            style={{ padding: '16px 16px 0 16px', fontSize: '18px', display: 'flex', justifyContent: 'space-between' }}
+          >
+            <div>{label}</div>
+            {account && !hideBalanceComp && (
+              <Text
+                data-dd-action-name="Token balance"
+                onClick={!disabled ? onMax : undefined}
+                color="textSubtle"
+                fontSize="16px"
+                ellipsis
+                title={
+                  !hideBalance && !!currency ? t('Balance: %balance%', { balance: balance ?? t('Loading') }) : ' -'
+                }
+                style={{ display: 'inline', cursor: 'pointer' }}
+              >
+                {!hideBalance && !!currency
+                  ? (balance?.replace('.', '')?.length || 0) > 12
+                    ? balance
+                    : t('Balance: %balance%', { balance: balance ?? t('Loading') })
+                  : ' -'}
+              </Text>
+            )}
+          </div>
           <InputRow selected={disableCurrencySelect}>
             {account && currency && selectedCurrencyBalance?.greaterThan(0) && !disabled && label !== 'To' && (
               <Flex alignItems="right" justifyContent="right">

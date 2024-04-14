@@ -85,7 +85,7 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = memo(
 
     const titleContent = (
       <Flex width="100%" alignItems="center" justifyContent="space-between" flexDirection="column">
-        <Flex flexDirection="row" alignItems="flex-start" justifyContent="space-between" width="100%" marginBottom={15}>
+        <Flex flexDirection="row" alignItems="flex-start" justifyContent="space-between" width="100%" marginBottom={0}>
           <Swap.CurrencyInputHeaderTitle>{title}</Swap.CurrencyInputHeaderTitle>
           <NotificationDot show={expertMode || isRoutingSettingChange}>
             <GlobalSettings

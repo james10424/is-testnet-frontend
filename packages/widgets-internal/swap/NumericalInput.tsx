@@ -3,6 +3,7 @@ import { memo } from "react";
 import { useTranslation } from "@pancakeswap/localization";
 import { escapeRegExp } from "@pancakeswap/utils/escapeRegExp";
 import { SwapCSS } from "@pancakeswap/uikit";
+import styled from "styled-components";
 
 const inputRegex = RegExp(`^\\d*(?:\\\\[.])?\\d*$`); // match escaped "." characters via in a non-capturing group
 
@@ -12,6 +13,11 @@ export type NumericalInputProps = {
   fontSize?: string;
 } & SwapCSS.InputVariants &
   Omit<React.HTMLProps<HTMLInputElement>, "ref" | "onChange" | "as">;
+
+const StyledInput = styled.input`
+  font-size: 24px;
+  font-weight: 600;
+`;
 
 export const NumericalInput = memo(function InnerInput({
   value,
@@ -32,7 +38,7 @@ export const NumericalInput = memo(function InnerInput({
   const { t } = useTranslation();
 
   return (
-    <input
+    <StyledInput
       className={clsx(
         className,
         SwapCSS.inputVariants({

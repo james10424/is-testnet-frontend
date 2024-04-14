@@ -12,25 +12,24 @@ const SwitchIconButton = styled(IconButton)`
   box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.1);
   background-color: ${({ theme }) => theme.colors.primary};
   .icon-up-down {
-    display: none;
     fill: white;
   }
   .icon-down {
     fill: white;
   }
-  &:hover {
-    .icon-down {
-      display: none;
-    }
-    .icon-up-down {
-      display: block;
-    }
-  }
 `;
+// &:hover {
+//   .icon-down {
+//     display: none;
+//   }
+//   .icon-up-down {
+//     display: block;
+//   }
+// }
 
 const SwitchButton = (props: ButtonProps) => (
   <SwitchIconButton variant="light" scale="sm" {...props}>
-    <ArrowDownIcon style={{ height: "20px" }} className="icon-down" color="primary" />
+    {/* <ArrowDownIcon style={{ height: "20px" }} className="icon-down" color="primary" /> */}
     <ArrowUpDownIcon style={{ height: "24px" }} className="icon-up-down" color="primary" />
   </SwitchIconButton>
 );

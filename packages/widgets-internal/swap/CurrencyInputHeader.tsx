@@ -13,7 +13,7 @@ export const CurrencyInputHeader = memo(({ title, subtitle }: Props) => {
       alignItems="center"
       flexDirection="column"
       padding="24px"
-      borderBottom="1"
+      // borderBottom="1"
       style={{ backgroundColor: "#23204E" }}
     >
       <AtomBox display="flex" width="100%" alignItems="center" justifyContent="space-between">

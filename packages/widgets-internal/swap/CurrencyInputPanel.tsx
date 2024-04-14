@@ -8,7 +8,9 @@ interface CurrencyInputPanelProps extends Omit<NumericalInputProps, "onBlur"> {
   top?: React.ReactNode;
   bottom?: React.ReactNode;
   showBridgeWarning?: boolean;
+  currencySelect?: React.ReactNode;
 }
+
 export function CurrencyInputPanel({
   value,
   onUserInput,
@@ -20,6 +22,7 @@ export function CurrencyInputPanel({
   error,
   loading,
   showBridgeWarning,
+  currencySelect,
 }: CurrencyInputPanelProps) {
   return (
     <AtomBox position="relative" id={id} display="grid" gap="4px">
@@ -33,8 +36,8 @@ export function CurrencyInputPanel({
         position="relative"
         // backgroundColor="backgroundAlt"
         zIndex="1"
-        // border="1"
-        // borderRadius="20px"
+        border="1"
+        borderRadius="20px"
       >
         <AtomBox
           as="label"
@@ -42,8 +45,9 @@ export function CurrencyInputPanel({
             showBridgeWarning: !!showBridgeWarning,
             error: Boolean(error),
           })}
-          style={{ backgroundColor: "#17153A", borderTopLeftRadius: "15px", borderTopRightRadius: "15px" }}
+          style={{ backgroundColor: "#17153A", borderRadius: "20px" }}
         >
+          {bottom}
           <AtomBox
             display="flex"
             flexDirection="row"
@@ -52,7 +56,7 @@ export function CurrencyInputPanel({
             fontSize="12px"
             lineHeight="16px"
             px="16px"
-            pt="12px"
+            py="12px"
             // style={{ backgroundColor: "#17153A", borderTopLeftRadius: "15px", borderTopRightRadius: "15px" }}
           >
             <NumericalInput
@@ -60,14 +64,16 @@ export function CurrencyInputPanel({
               disabled={disabled}
               loading={loading}
               className="token-amount-input"
+              align="left"
+              placeholder="Input Amount"
               value={value}
               onBlur={onInputBlur}
               onUserInput={(val) => {
                 onUserInput(val);
               }}
             />
+            {currencySelect}
           </AtomBox>
-          {bottom}
         </AtomBox>
 
         {error ? (
