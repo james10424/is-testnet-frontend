@@ -9,7 +9,7 @@ import {
   Flex,
   InfoIcon,
   Text,
-  UserMenu,
+  UserMenu2,
   UserMenuDivider,
   UserMenuItem,
   useTooltip,
@@ -193,8 +193,8 @@ export const NetworkSwitcher = () => {
   return (
     <Box ref={cannotChangeNetwork ? targetRef : null} height="100%">
       {cannotChangeNetwork && tooltipVisible && tooltip}
-      <UserMenu
-        mr="8px"
+      <UserMenu2
+        mr="16px"
         placement="bottom"
         variant={isLoading ? 'pending' : isWrongNetwork ? 'danger' : 'default'}
         avatarSrc={`${ASSET_CDN}/web/chains/${chainId}.png`}
@@ -221,7 +221,7 @@ export const NetworkSwitcher = () => {
             <NetworkSelect switchNetwork={switchNetworkAsync} chainId={chainId} />
           )
         }
-      </UserMenu>
+      </UserMenu2>
     </Box>
   )
 }

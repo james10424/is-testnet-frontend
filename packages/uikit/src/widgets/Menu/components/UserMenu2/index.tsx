@@ -138,7 +138,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
 
   return (
     <Flex alignItems="center" height="100%" ref={setTargetRef} {...props}>
-      <StyledUserMenu
+      <StyledUserMenu2
         onTouchStart={() => {
           setIsOpen((s) => !s);
         }}
@@ -148,7 +148,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
           {text || (ellipsis ? accountEllipsis : account)}
         </LabelText>
         {!disabled && <ChevronDownIcon color="text" width="24px" />}
-      </StyledUserMenu>
+      </StyledUserMenu2>
       {!disabled && (
         <Menu style={styles.popper} ref={setTooltipRef} {...attributes.popper} $isOpen={isOpen}>
           <Box onClick={() => setIsOpen(false)}>{children?.({ isOpen })}</Box>
