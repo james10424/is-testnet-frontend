@@ -16,7 +16,7 @@ interface Props {
 }
 
 const RouteInfoContainer = styled(RowBetween)`
-  padding: 4px 24px 0;
+  padding: 0px 24px 0;
 `
 
 export const RoutesBreakdown = memo(function RoutesBreakdown({ routes = [], isMM }: Props) {

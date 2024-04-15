@@ -35,65 +35,15 @@ export const TradeSummary = memo(function TradeSummary({
   const isExactIn = tradeType === TradeType.EXACT_INPUT
 
   return (
-    <AutoColumn style={{ padding: '0 24px' }}>
-      <RowBetween>
-        <RowFixed>
-          <Text fontSize="14px" color="textSubtle">
-            {isExactIn ? t('Minimum received') : t('Maximum sold')}
-          </Text>
-          <QuestionHelper
-            text={t(
-              'Your transaction will revert if there is a large, unfavorable price movement before it is confirmed.',
-            )}
-            ml="4px"
-            placement="top"
-          />
-        </RowFixed>
-        <RowFixed>
-          <Text fontSize="14px">
-            {isExactIn
-              ? `${formatAmount(slippageAdjustedAmounts[Field.OUTPUT], 4)} ${outputAmount?.currency?.symbol}` ?? '-'
-              : `${formatAmount(slippageAdjustedAmounts[Field.INPUT], 4)} ${inputAmount?.currency?.symbol}` ?? '-'}
-          </Text>
-        </RowFixed>
-      </RowBetween>
-      {priceImpactWithoutFee && (
-        <RowBetween style={{ padding: '4px 0 0 0' }}>
-          <RowFixed>
-            <Text fontSize="14px" color="textSubtle">
-              {t('Price Impact')}
-            </Text>
-            <QuestionHelper
-              text={
-                <>
-                  <Text>
-                    <Text bold display="inline-block">
-                      {t('AMM')}
-                    </Text>
-                    {`: ${t('The difference between the market price and estimated price due to trade size.')}`}
-                  </Text>
-                  <Text mt="10px">
-                    <Text bold display="inline-block">
-                      {t('MM')}
-                    </Text>
-                    {`: ${t('No slippage against quote from market maker')}`}
-                  </Text>
-                </>
-              }
-              ml="4px"
-              placement="top"
-            />
-          </RowFixed>
+    <AutoColumn style={{ padding: '0 24px' }} gap="12px">
+      <div style={{ fontSize: '18px', fontWeight: '600', paddingBottom: '12px' }}>Transaction Details</div>
 
-          {isMM ? <Text color="textSubtle">--</Text> : <FormattedPriceImpact priceImpact={priceImpactWithoutFee} />}
-        </RowBetween>
-      )}
-
+      {/* trading fee */}
       {realizedLPFee && (
-        <RowBetween style={{ padding: '4px 0 0 0' }}>
+        <RowBetween>
           <RowFixed>
             <Text fontSize="14px" color="textSubtle">
-              {t('Trading Fee')}
+              {t('Liquidity Provider Fee')}
             </Text>
             <QuestionHelper
               text={
@@ -139,6 +89,62 @@ export const TradeSummary = memo(function TradeSummary({
           <Text fontSize="14px">{`${formatAmount(realizedLPFee, 4)} ${inputAmount?.currency?.symbol}`}</Text>
         </RowBetween>
       )}
+
+      {/* impact */}
+      {priceImpactWithoutFee && (
+        <RowBetween>
+          <RowFixed>
+            <Text fontSize="14px" color="textSubtle">
+              {t('Price Impact')}
+            </Text>
+            <QuestionHelper
+              text={
+                <>
+                  <Text>
+                    <Text bold display="inline-block">
+                      {t('AMM')}
+                    </Text>
+                    {`: ${t('The difference between the market price and estimated price due to trade size.')}`}
+                  </Text>
+                  <Text mt="10px">
+                    <Text bold display="inline-block">
+                      {t('MM')}
+                    </Text>
+                    {`: ${t('No slippage against quote from market maker')}`}
+                  </Text>
+                </>
+              }
+              ml="4px"
+              placement="top"
+            />
+          </RowFixed>
+
+          {isMM ? <Text color="textSubtle">--</Text> : <FormattedPriceImpact priceImpact={priceImpactWithoutFee} />}
+        </RowBetween>
+      )}
+
+      {/* minimum */}
+      <RowBetween>
+        <RowFixed>
+          <Text fontSize="14px" color="textSubtle">
+            {isExactIn ? t('Minimum received') : t('Maximum sold')}
+          </Text>
+          <QuestionHelper
+            text={t(
+              'Your transaction will revert if there is a large, unfavorable price movement before it is confirmed.',
+            )}
+            ml="4px"
+            placement="top"
+          />
+        </RowFixed>
+        <RowFixed>
+          <Text fontSize="14px">
+            {isExactIn
+              ? `${formatAmount(slippageAdjustedAmounts[Field.OUTPUT], 4)} ${outputAmount?.currency?.symbol}` ?? '-'
+              : `${formatAmount(slippageAdjustedAmounts[Field.INPUT], 4)} ${inputAmount?.currency?.symbol}` ?? '-'}
+          </Text>
+        </RowFixed>
+      </RowBetween>
     </AutoColumn>
   )
 })

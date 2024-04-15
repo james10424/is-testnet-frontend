@@ -105,12 +105,12 @@ export function Chart({
       <svg width="100%" height="100%" viewBox={`0 0 ${width} ${height}`} style={{ overflow: "visible" }}>
         <defs>
           <linearGradient id="green-gradient" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor={theme.colors.success} stopOpacity={1} />
-            <stop offset="100%" stopColor={theme.colors.success} stopOpacity={0.2} />
+            <stop offset="5%" stopColor="#165DFF" stopOpacity={1} />
+            <stop offset="100%" stopColor="165DFF" stopOpacity={0} />
           </linearGradient>
           <linearGradient id="red-gradient" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor={theme.colors.failure} stopOpacity={1} />
-            <stop offset="100%" stopColor={theme.colors.failure} stopOpacity={0.2} />
+            <stop offset="5%" stopColor="#A350FF" stopOpacity={1} />
+            <stop offset="100%" stopColor="B348FF" stopOpacity={0} />
           </linearGradient>
         </defs>
         <defs>

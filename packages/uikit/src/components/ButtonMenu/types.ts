@@ -12,6 +12,6 @@ export interface ButtonMenuProps extends SpaceProps {
   onItemClick?: (index: number, event: React.MouseEvent<HTMLElement>) => void;
   scale?: Scale;
   disabled?: boolean;
-  children: ReactElement[];
+  children: ReactElement[] | React.ReactNode;
   fullWidth?: boolean;
 }

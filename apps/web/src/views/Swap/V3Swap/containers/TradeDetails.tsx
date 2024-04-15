@@ -69,7 +69,7 @@ export const TradeDetails = memo(function TradeDetails({ loaded, trade }: Props)
 
   return (
     <AdvancedDetailsFooter show={loaded}>
-      <AutoColumn gap="0px">
+      <AutoColumn gap="12px">
         <TradeSummary
           slippageAdjustedAmounts={slippageAdjustedAmounts}
           inputAmount={inputAmount}

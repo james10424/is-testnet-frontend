@@ -14,7 +14,7 @@ export const RiskCheck = memo(function RiskCheck({ currency }: Props) {
   const { isAccessTokenSupported } = useContext(SwapFeaturesContext)
 
   if (!isAccessTokenSupported || !currency?.isToken) {
-    return null
+    return <div></div>
   }
 
   return (

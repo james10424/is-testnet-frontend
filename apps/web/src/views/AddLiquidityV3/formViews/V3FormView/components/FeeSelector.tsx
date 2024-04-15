@@ -2,7 +2,7 @@ import { ChainId } from '@pancakeswap/chains'
 import { farmsV3ConfigChainMap } from '@pancakeswap/farms/constants/v3'
 import { useTranslation } from '@pancakeswap/localization'
 import { Currency } from '@pancakeswap/sdk'
-import { AtomBox, AutoColumn, Button, CircleLoader, Text } from '@pancakeswap/uikit'
+import { AtomBox, AutoColumn, Button, CircleLoader, PreTitle, Text } from '@pancakeswap/uikit'
 import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
 import { FeeAmount } from '@pancakeswap/v3-sdk'
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -169,26 +169,29 @@ export default function FeeSelector({
   }, [feeAmount, isPending, isError, largestUsageFeeTier, handleFeePoolSelect, v2PairHasBetterTokenAmounts, farmV3])
 
   return (
-    <SelectContainer>
-      {FEE_TIERS.map((_feeAmount) => {
-        const { supportedChains } = FEE_AMOUNT_DETAIL[_feeAmount]
-        if (chainId && supportedChains.includes(chainId)) {
-          return (
-            <FeeOption
-              isLoading={isPending}
-              largestUsageFeeTier={largestUsageFeeTier}
-              feeAmount={_feeAmount}
-              active={feeAmount === _feeAmount}
-              onClick={() => handleFeePoolSelect({ type: SELECTOR_TYPE.V3, feeAmount: _feeAmount })}
-              distributions={distributions}
-              poolState={poolsByFeeTier[_feeAmount]}
-              key={_feeAmount}
-            />
-          )
-        }
-        return null
-      })}
-    </SelectContainer>
+    <>
+      <PreTitle mb="8px">Fees Tiers</PreTitle>
+      <SelectContainer>
+        {FEE_TIERS.map((_feeAmount) => {
+          const { supportedChains } = FEE_AMOUNT_DETAIL[_feeAmount]
+          if (chainId && supportedChains.includes(chainId)) {
+            return (
+              <FeeOption
+                isLoading={isPending}
+                largestUsageFeeTier={largestUsageFeeTier}
+                feeAmount={_feeAmount}
+                active={feeAmount === _feeAmount}
+                onClick={() => handleFeePoolSelect({ type: SELECTOR_TYPE.V3, feeAmount: _feeAmount })}
+                distributions={distributions}
+                poolState={poolsByFeeTier[_feeAmount]}
+                key={_feeAmount}
+              />
+            )
+          }
+          return null
+        })}
+      </SelectContainer>
+    </>
   )
 
   return (
