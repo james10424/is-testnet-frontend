@@ -22,10 +22,6 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
-    "lint": {
-      "dependsOn": ["@pancakeswap/next-config#build"],
-      "outputs": []
-    },
     "dev": {
       "dependsOn": ["@pancakeswap/next-config#build"],
       "cache": false,
