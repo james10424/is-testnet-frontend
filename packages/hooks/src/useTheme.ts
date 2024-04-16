@@ -13,7 +13,8 @@ const useTheme = () => {
   const handleSwitchTheme = useCallback(
     (themeValue: 'light' | 'dark') => {
       try {
-        setTheme(themeValue)
+        // setTheme(themeValue)
+        setTheme('dark')
         Cookie.set(COOKIE_THEME_KEY, themeValue, { domain: THEME_DOMAIN })
       } catch (err) {
         // ignore set cookie error for perp theme

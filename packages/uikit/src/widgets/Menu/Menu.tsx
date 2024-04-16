@@ -146,7 +146,7 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
               <Flex>
                 {/* <Logo href={homeLink?.href ?? "/"} /> */}
                 <a href="/swap">
-                  <img src="https://iswap.tech/images/iswap-logo.png" width={100} height={40} alt="logo" />
+                  <img src="/images/iswap-logo.svg" width={100} height={40} alt="logo" />
                 </a>
                 <AtomBox display={{ xs: "none", md: "block" }}>
                   <MenuItems items={links} activeItem={activeItem} activeSubItem={activeSubItem} ml="24px" />

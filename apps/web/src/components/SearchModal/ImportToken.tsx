@@ -69,19 +69,14 @@ function ImportToken({ tokens, handleCurrencySelect }: ImportProps) {
     <AutoColumn gap="lg">
       <Message variant="warning">
         <Text>
-          {t(
-            'Anyone can create tokens on %network% with any name, including creating fake versions of existing tokens and tokens that claim to represent projects that do not have a token.',
-            {
-              network: chains.find((c) => c.id === chainId)?.name,
-            },
-          )}
+          You will be switched to Testnet. Anyone can create tokens with any name.
           <br />
           <br />
-          <b>{t('If you purchase a fraudulent token, you may be exposed to permanent loss of funds.')}</b>
+          <b>If you purchase a fraudulent token, you may be exposed to permanent loss of funds.</b>
         </Text>
       </Message>
 
-      {tokens.map((token) => {
+      {/* {tokens.map((token) => {
         const list = token.chainId && inactiveTokenList?.[token.chainId]?.[token.address]?.list
         const address = token.address ? `${truncateHash(token.address)}` : null
         return (
@@ -130,7 +125,7 @@ function ImportToken({ tokens, handleCurrencySelect }: ImportProps) {
             )}
           </Flex>
         )
-      })}
+      })} */}
 
       <Grid gridTemplateRows="1fr 1fr" gridGap="4px">
         <Flex alignItems="center" onClick={() => setConfirmed(!confirmed)}>
@@ -152,7 +147,7 @@ function ImportToken({ tokens, handleCurrencySelect }: ImportProps) {
           )}
         </Flex>
         <Button
-          variant="danger"
+          // variant="danger"
           disabled={!confirmed}
           onClick={() => {
             tokens.forEach((token) => {
@@ -173,7 +168,8 @@ function ImportToken({ tokens, handleCurrencySelect }: ImportProps) {
           }}
           className=".token-dismiss-button"
         >
-          {hasRiskToken ? t('Proceed') : t('Import')}
+          {/* {hasRiskToken ? t('Proceed') : t('Import')} */}
+          Proceed
         </Button>
       </Grid>
     </AutoColumn>

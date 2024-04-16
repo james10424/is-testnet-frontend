@@ -76,8 +76,8 @@ const config: (
       // ].map((item) => addMenuItemSupported(item, chainId)),
     },
     {
-      label: t('Pools'),
-      href: '/liquidity',
+      label: 'Pools',
+      href: '/liquidity-pools',
       icon: EarnIcon,
       fillIcon: EarnFillIcon,
       image: '/images/decorations/pe2.png',

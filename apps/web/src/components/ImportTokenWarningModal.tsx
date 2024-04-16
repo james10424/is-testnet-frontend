@@ -28,7 +28,7 @@ const ImportTokenWarningModal: React.FC<React.PropsWithChildren<Props>> = ({ tok
 
   return (
     <Modal
-      title={t('Import Token')}
+      title="Testnet"
       onDismiss={() => {
         onDismiss?.()
         onCancel()
