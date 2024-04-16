@@ -40,12 +40,40 @@ const AppHeaderContainer = styled(Flex)<{ borderHidden?: boolean }>`
   padding: 24px;
   width: 100%;
   border: 0;
+  @media (max-width: 767px) {
+    padding: 8px;
+  }
 `
 
 const FilterSection = styled(AutoRow)`
   padding-top: 16px;
   margin-top: 16px;
   border-top: 1px solid ${({ theme }) => theme.colors.cardBorder};
+`
+
+const BackBtnWrapper = styled.div`
+  position: absolute;
+  left: 0;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 767px) {
+    position: static;
+    top: 0;
+  }
+`
+
+const HeaderWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  gap: 16px;
+
+  @media (max-width: 767px) {
+    align-items: start;
+    flex-direction: column;
+  }
 `
 
 const AppHeader: React.FC<React.PropsWithChildren<Props>> = ({
@@ -67,12 +95,8 @@ const AppHeader: React.FC<React.PropsWithChildren<Props>> = ({
     <AppHeaderContainer borderHidden={borderHidden}>
       <Flex alignItems="center" width="100%" style={{ gap: '16px' }}>
         <Flex pr={backTo && shouldCenter ? '48px' : ''} flexDirection="column" width="100%" marginTop="4px">
-          <Flex mb="8px" alignItems="center" flexWrap="wrap" justifyContent="center" style={{ gap: '16px' }}>
-            <div
-              // flex={1}
-              // justifyContent={shouldCenter ? 'center' : ''}
-              style={{ position: 'absolute', left: 0, display: 'flex', alignItems: 'center' }}
-            >
+          <HeaderWrapper>
+            <BackBtnWrapper>
               {backTo &&
                 (typeof backTo === 'string' ? (
                   <Link legacyBehavior passHref href={backTo}>
@@ -85,12 +109,14 @@ const AppHeader: React.FC<React.PropsWithChildren<Props>> = ({
                     <ArrowBackIcon width="32px" />
                   </IconButton>
                 ))}
-              {typeof title === 'string' ? <Heading as="h2">{title}</Heading> : title}
+              {/* {typeof title === 'string' ? <Heading as="h2">{title}</
+              Heading> : title} */}
+              <Heading as="h2">Back</Heading>
               {helper && <QuestionHelper text={helper} ml="4px" placement="top" />}
-            </div>
+            </BackBtnWrapper>
             <Flex>{center}</Flex>
             {!noConfig && (
-              <Flex alignItems="flex-end" style={{ position: 'absolute', right: '0' }}>
+              <Flex alignItems="flex-end" style={{ position: 'absolute', right: '0', alignItems: 'center' }}>
                 {IconSlot}
                 <NotificationDot show={expertMode}>
                   <GlobalSettings mode={SettingsMode.SWAP_LIQUIDITY} />
@@ -103,7 +129,7 @@ const AppHeader: React.FC<React.PropsWithChildren<Props>> = ({
               </Flex>
             )}
             {noConfig && IconSlot && <Flex alignItems="center">{IconSlot}</Flex>}
-          </Flex>
+          </HeaderWrapper>
           {subtitle && (
             <Flex alignItems="center" justifyContent={shouldCenter ? 'center' : ''}>
               <Text textAlign={shouldCenter ? 'center' : 'inherit'} color="textSubtle" fontSize="14px">

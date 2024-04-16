@@ -30,6 +30,10 @@ const StyledNav = styled.nav`
   background-color: ${({ theme }) => theme.nav.background};
   transform: translate3d(0, 0, 0);
 
+  @media (max-width: 767px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
   padding-left: 75px;
   padding-right: 75px;
 `;

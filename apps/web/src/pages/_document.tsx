@@ -47,7 +47,7 @@ class MyDocument extends Document {
           <link rel="apple-touch-icon" href="/logo.png" />
           <link rel="manifest" href="/manifest.json" />
         </Head>
-        <body>
+        <body style={{ backgroundColor: '#18163B', height: '100vh' }}>
           <noscript>
             <iframe
               src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTAG}`}

@@ -372,6 +372,16 @@ const SELECTOR_TYPE_T = {
   [SELECTOR_TYPE.V3]: <Trans>Add V3 Liquidity</Trans>,
 } as const satisfies Record<SELECTOR_TYPE, ReactNode>
 
+const CenterWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  @media (max-width: 767px) {
+    align-items: start;
+  }
+`
+
 export function AddLiquidityV3Layout({
   showRefreshButton = false,
   preferredSelectType,
@@ -407,7 +417,7 @@ export function AddLiquidityV3Layout({
       )
       return `/stable/${selectedLp?.lpAddress}`
     }
-    return '/liquidity'
+    return '/liquidity-pools'
   }, [lpTokens, baseCurrency, quoteCurrency, currencyIdA, currencyIdB, preferredSelectType])
 
   return (
@@ -417,10 +427,10 @@ export function AddLiquidityV3Layout({
           title={title}
           backTo={backToLink}
           center={
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+            <CenterWrapper>
               <div style={{ fontSize: 35, fontWeight: 600 }}>Add Pools</div>
               <div>Search and find the best asset</div>
-            </div>
+            </CenterWrapper>
           }
           borderHidden
           // IconSlot={

@@ -47,7 +47,7 @@ export const StyledUserMenu2 = styled(Flex)`
 
 export const LabelText = styled.div`
   color: ${({ theme }) => theme.colors.text};
-  display: none;
+  // display: none;
   font-weight: 600;
 
   ${({ theme }) => theme.mediaQueries.sm} {
@@ -81,6 +81,13 @@ const Menu = styled.div<{ $isOpen: boolean }>`
 
   ${UserMenuItem}:last-child {
     border-radius: 0 0 8px 8px;
+  }
+`;
+
+const IconWrapper = styled.div`
+  display: block;
+  @media (max-width: 767px) {
+    display: none;
   }
 `;
 
@@ -143,7 +150,9 @@ const UserMenu: React.FC<UserMenuProps> = ({
           setIsOpen((s) => !s);
         }}
       >
-        <MenuIcon className={avatarClassName} avatarSrc={avatarSrc} variant={variant} />
+        <IconWrapper>
+          <MenuIcon className={avatarClassName} avatarSrc={avatarSrc} variant={variant} />
+        </IconWrapper>
         <LabelText title={typeof text === "string" ? text || account : account}>
           {text || (ellipsis ? accountEllipsis : account)}
         </LabelText>

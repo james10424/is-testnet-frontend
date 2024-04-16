@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { AtomBox, AtomBoxProps, SwapCSS } from "@pancakeswap/uikit";
 
 import { SwapFooter } from "./Footer";
+import styled from "styled-components";
 
 type SwapPageProps = AtomBoxProps & {
   removePadding?: boolean;
@@ -12,6 +13,13 @@ type SwapPageProps = AtomBoxProps & {
   externalText?: string;
   externalLinkUrl?: string;
 };
+
+const Wrapper = styled.div`
+  display: flex;
+  @media (max-width: 767px) {
+    display: block;
+  }
+`;
 
 export const SwapPage = ({
   removePadding,
@@ -24,7 +32,12 @@ export const SwapPage = ({
   externalLinkUrl,
   ...props
 }: SwapPageProps) => (
-  <AtomBox className={SwapCSS.pageVariants({ removePadding, noMinHeight })} {...props}>
+  <AtomBox
+    as={Wrapper}
+    className={SwapCSS.pageVariants({ removePadding, noMinHeight })}
+    style={{ paddingTop: "50px" }}
+    {...props}
+  >
     {children}
     <AtomBox display="flex" flexGrow={1} />
     <AtomBox display={["block", null, null, hideFooterOnDesktop ? "none" : "block"]} width="100%">

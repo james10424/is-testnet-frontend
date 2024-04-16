@@ -41,12 +41,14 @@ const BodyLock = () => {
   useEffect(() => {
     document.body.style.cssText = `
       overflow: hidden;
+      background-color: #18163B;
     `;
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.cssText = `
         overflow: visible;
         overflow: overlay;
+        background-color: #18163B;
       `;
     };
   }, []);

@@ -19,6 +19,14 @@ import PriceChartContainer from './components/Chart/PriceChartContainer'
 import HotTokenList from './components/HotTokenList'
 import useWarningImport from './hooks/useWarningImport'
 import { StyledInputCurrencyWrapper, StyledSwapContainer } from './styles'
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+  display: flex;
+  @media (max-width: 767px) {
+    display: block;
+  }
+`
 
 export default function Swap() {
   const { query } = useRouter()
@@ -87,7 +95,8 @@ export default function Swap() {
 
   return (
     <Page removePadding={isChartExpanded} hideFooterOnDesktop={isChartExpanded}>
-      <Flex width={['637px', '100%']} height="100%" justifyContent="center" position="relative" alignItems="flex-start">
+      {/* <Flex width={['637px', '100%']} height="100%" justifyContent="center" position="relative" alignItems="flex-start"> */}
+      <Wrapper>
         {isDesktop && isChartSupported && (
           <PriceChartContainer
             inputCurrencyId={inputCurrencyId}
@@ -141,16 +150,16 @@ export default function Swap() {
             />
           </Modal>
         </ModalV2>
-        <Flex flexDirection="column">
-          <StyledSwapContainer $isChartExpanded={isChartExpanded}>
-            <StyledInputCurrencyWrapper mt={isChartExpanded ? '24px' : '0'}>
-              <AppBody>
-                <V3SwapForm />
-              </AppBody>
-            </StyledInputCurrencyWrapper>
-          </StyledSwapContainer>
-        </Flex>
-      </Flex>
+        {/* <Flex flexDirection="column"> */}
+        <StyledSwapContainer $isChartExpanded={isChartExpanded}>
+          <StyledInputCurrencyWrapper mt={isChartExpanded ? '24px' : '0'}>
+            <AppBody>
+              <V3SwapForm />
+            </AppBody>
+          </StyledInputCurrencyWrapper>
+        </StyledSwapContainer>
+        {/* </Flex> */}
+      </Wrapper>
     </Page>
   )
 }
