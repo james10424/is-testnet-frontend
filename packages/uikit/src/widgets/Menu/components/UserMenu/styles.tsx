@@ -12,6 +12,7 @@ export const UserMenuItem = styled.button<UserMenuItemProps>`
   align-items: center;
   border: 0;
   color: #fff;
+  background-color: transparent;
   cursor: pointer;
   display: flex;
   font-size: 16px;

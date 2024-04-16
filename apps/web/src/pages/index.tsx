@@ -8,9 +8,16 @@ import { getBlocksFromTimestamps } from 'utils/getBlocksFromTimestamps'
 import { bitQueryServerClient, infoServerClient } from 'utils/graphql'
 import { formatEther } from 'viem'
 import Home from '../views/Home'
+import { SwapFeaturesProvider } from 'views/Swap/SwapFeaturesContext'
+import Swap from 'views/Swap'
 
 const IndexPage = () => {
-  return <Home />
+  // return <Home />
+  return (
+    <SwapFeaturesProvider>
+      <Swap />
+    </SwapFeaturesProvider>
+  )
 }
 
 // Values fetched from TheGraph and BitQuery jan 24, 2022

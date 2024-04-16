@@ -25,7 +25,8 @@ const StyledNav = styled.nav`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: ${MENU_HEIGHT}px;
+  // height: ${MENU_HEIGHT}px;
+  padding: 8px;
   background-color: ${({ theme }) => theme.nav.background};
   transform: translate3d(0, 0, 0);
 

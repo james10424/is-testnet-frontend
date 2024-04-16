@@ -34,7 +34,7 @@ export const StyledUserMenu2 = styled(Flex)`
   cursor: pointer;
   display: inline-flex;
   height: 48px;
-  padding-left: 32px;
+  padding-left: 16px;
   padding-right: 8px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -58,7 +58,7 @@ export const LabelText = styled.div`
 `;
 
 const Menu = styled.div<{ $isOpen: boolean }>`
-  background-color: ${({ theme }) => theme.card.background};
+  background-color: #1f1d3b;
   border: 1px solid ${({ theme }) => theme.colors.cardBorder};
   border-radius: 16px;
   padding-bottom: 4px;
