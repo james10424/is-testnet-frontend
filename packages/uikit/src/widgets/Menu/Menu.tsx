@@ -30,8 +30,8 @@ const StyledNav = styled.nav`
   background-color: ${({ theme }) => theme.nav.background};
   transform: translate3d(0, 0, 0);
 
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 75px;
+  padding-right: 75px;
 `;
 
 const FixedContainer = styled("div").withConfig({
@@ -145,7 +145,9 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
             <StyledNav>
               <Flex>
                 {/* <Logo href={homeLink?.href ?? "/"} /> */}
-                <img src="https://iswap.tech/images/iswap-logo.png" width={115} height={45} alt="logo" />
+                <a href="/swap">
+                  <img src="https://iswap.tech/images/iswap-logo.png" width={100} height={40} alt="logo" />
+                </a>
                 <AtomBox display={{ xs: "none", md: "block" }}>
                   <MenuItems items={links} activeItem={activeItem} activeSubItem={activeSubItem} ml="24px" />
                 </AtomBox>

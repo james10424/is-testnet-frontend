@@ -101,7 +101,7 @@ const Menu = (props) => {
         linkComponent={LinkComponent}
         rightSide={
           <>
-            <GlobalSettings mode={SettingsMode.GLOBAL} />
+            {/* <GlobalSettings mode={SettingsMode.GLOBAL} /> */}
             {/* {enabled && (
               <Suspense fallback={null}>
                 <Notifications />

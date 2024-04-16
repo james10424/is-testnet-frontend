@@ -65,7 +65,7 @@ export function CurrencyInputPanel({
               loading={loading}
               className="token-amount-input"
               align="left"
-              placeholder="Input Amount"
+              // placeholder="Input Amount"
               value={value}
               onBlur={onInputBlur}
               onUserInput={(val) => {

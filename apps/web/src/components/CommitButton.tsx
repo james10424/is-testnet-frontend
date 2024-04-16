@@ -6,7 +6,7 @@ import { hideWrongNetworkModalAtom } from './NetworkModal'
 import Trans from './Trans'
 
 const wrongNetworkProps: ButtonProps = {
-  variant: 'danger',
+  // variant: 'danger',
   disabled: false,
   children: <Trans>Wrong Network</Trans>,
 }

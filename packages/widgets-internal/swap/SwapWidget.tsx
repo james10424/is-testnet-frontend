@@ -10,7 +10,7 @@ import { TradePrice } from "./TradePrice";
 
 const SwitchIconButton = styled(IconButton)`
   box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.1);
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: #bc42ff;
   .icon-up-down {
     fill: white;
   }

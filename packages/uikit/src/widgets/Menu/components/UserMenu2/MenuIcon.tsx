@@ -15,9 +15,6 @@ const MenuIconWrapper = styled.div<{ borderColor: keyof Colors }>`
   display: flex;
   height: 32px;
   justify-content: center;
-  left: 0;
-  position: absolute;
-  top: 0;
   width: 32px;
   z-index: 102;
 `;
