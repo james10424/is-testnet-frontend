@@ -315,7 +315,7 @@ export default function PoolListPage() {
 
               <ButtonMenu
                 scale="sm"
-                activeIndex={selectedTypeIndex}
+                activeIndex={0}
                 onItemClick={(index) => setSelectedTypeIndex(index)}
                 variant="subtle"
               >
