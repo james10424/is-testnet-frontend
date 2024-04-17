@@ -7,12 +7,18 @@ import { getCakeContract } from 'utils/contractHelpers'
 import { getBlocksFromTimestamps } from 'utils/getBlocksFromTimestamps'
 import { bitQueryServerClient, infoServerClient } from 'utils/graphql'
 import { formatEther } from 'viem'
-// import Home from '../views/Home'
+import Home from '../views/Home'
 import { SwapFeaturesProvider } from 'views/Swap/SwapFeaturesContext'
 import Swap from 'views/Swap'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 const IndexPage = () => {
   // return <Home />
+  const router = useRouter()
+  useEffect(() => {
+    router.replace('/swap')
+  }, [])
   return (
     <SwapFeaturesProvider>
       <Swap />
