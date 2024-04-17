@@ -581,7 +581,9 @@ export default function PoolPage() {
                 currency1 && (
                   <>
                     <NextLinkFromReactRouter
-                      to={`/increase/${currencyId(currency0)}/${currencyId(currency1)}/${feeAmount}/${tokenId}`}
+                      to={`/liquidity/increase/${currencyId(currency0)}/${currencyId(
+                        currency1,
+                      )}/${feeAmount}/${tokenId}`}
                     >
                       <Button disabled={!isOwnNFT} width="100%">
                         {t('Add')}
@@ -602,7 +604,7 @@ export default function PoolPage() {
               {isMobile && (
                 <>
                   <NextLinkFromReactRouter
-                    to={`/increase/${currencyId(currency0)}/${currencyId(currency1)}/${feeAmount}/${tokenId}`}
+                    to={`/liquidity/increase/${currencyId(currency0)}/${currencyId(currency1)}/${feeAmount}/${tokenId}`}
                   >
                     <Button disabled={!isOwnNFT} width="100%" mb="8px">
                       {t('Add')}
@@ -653,9 +655,10 @@ export default function PoolPage() {
                     </Text>
                     <LightGreyCard
                       mr="4px"
-                      style={{
-                        padding: '16px 8px',
-                      }}
+                      // style={{
+                      //   padding: '16px 8px',
+                      // }}
+                      style={{ border: '0.5px solid #FFF', padding: '12px', borderRadius: '12px' }}
                     >
                       <AutoRow justifyContent="space-between" mb="8px">
                         <Flex>
@@ -734,9 +737,7 @@ export default function PoolPage() {
                     </AutoRow>
                     <LightGreyCard
                       mr="4px"
-                      style={{
-                        padding: '16px 8px',
-                      }}
+                      style={{ border: '0.5px solid #FFF', padding: '12px', borderRadius: '12px' }}
                     >
                       <AutoRow justifyContent="space-between" mb="8px">
                         <Flex>
