@@ -3,15 +3,15 @@ import { DefaultSeoProps } from 'next-seo'
 export const SEO: DefaultSeoProps = {
   titleTemplate: '%s | iSwap',
   defaultTitle: 'iSwap',
-  description: 'Trade, earn, and own crypto on the all-in-one multichain DEX',
+  description: 'The Liquidity Reshaper in Web3 Space',
   // twitter: {
   //   cardType: 'summary_large_image',
   //   handle: '@PancakeSwap',
   //   site: '@PancakeSwap',
   // },
   openGraph: {
-    title: "🥞 iSwap - Everyone's Favorite DEX",
-    description: 'Trade, earn, and own crypto on the all-in-one multichain DEX',
-    images: [{ url: 'https://assets.pancakeswap.finance/web/og/v2/hero.jpg' }],
+    title: 'iSwap - The Liquidity Reshaper in Web3 Space',
+    description: 'Liquidity infrastructure provider focused on enhancing market efficiency',
+    images: [{ url: `${process.env.NEXT_PUBLIC_ISWAP_URL}/images/seo.png` }],
   },
 }
