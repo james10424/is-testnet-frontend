@@ -45,7 +45,8 @@
     "@typescript-eslint/no-unused-vars": "off",
     "no-continue": "off",
     "jsx-a11y/control-has-associated-label": "off",
-    "import/order": "off"
+    "import/order": "off",
+    "spaced-comment": "off"
     // End temporary rules
   }
 }
