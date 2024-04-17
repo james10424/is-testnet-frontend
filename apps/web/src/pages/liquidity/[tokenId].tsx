@@ -588,7 +588,7 @@ export default function PoolPage() {
                       </Button>
                     </NextLinkFromReactRouter>
                     {!removed && (
-                      <NextLinkFromReactRouter to={`/remove/${tokenId}`}>
+                      <NextLinkFromReactRouter to={`/liquidity/remove/${tokenId}`}>
                         <Button disabled={!isOwnNFT} ml="4px" variant="secondary" width="100%">
                           {t('Remove')}
                         </Button>
@@ -609,7 +609,7 @@ export default function PoolPage() {
                     </Button>
                   </NextLinkFromReactRouter>
                   {!removed && (
-                    <NextLinkFromReactRouter to={`/remove/${tokenId}`}>
+                    <NextLinkFromReactRouter to={`/liquidity/remove/${tokenId}`}>
                       <Button disabled={!isOwnNFT} variant="secondary" width="100%" mb="8px">
                         {t('Remove')}
                       </Button>

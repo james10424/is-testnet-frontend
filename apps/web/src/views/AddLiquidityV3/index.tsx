@@ -417,7 +417,7 @@ export function AddLiquidityV3Layout({
       )
       return `/stable/${selectedLp?.lpAddress}`
     }
-    return '/liquidity-pools'
+    return '/liquidity'
   }, [lpTokens, baseCurrency, quoteCurrency, currencyIdA, currencyIdB, preferredSelectType])
 
   return (

@@ -100,18 +100,23 @@ const AppHeader: React.FC<React.PropsWithChildren<Props>> = ({
               {backTo &&
                 (typeof backTo === 'string' ? (
                   <Link legacyBehavior passHref href={backTo}>
-                    <IconButton as="a" scale="sm">
-                      <ArrowBackIcon width="32px" />
+                    <IconButton as="a" scale="sm" style={{ display: 'flex', alignItems: 'center' }}>
+                      <ArrowBackIcon width="32px" /> <Heading as="h2">Back</Heading>
                     </IconButton>
                   </Link>
                 ) : (
-                  <IconButton scale="sm" variant="text" onClick={backTo}>
-                    <ArrowBackIcon width="32px" />
+                  <IconButton
+                    scale="sm"
+                    variant="text"
+                    onClick={backTo}
+                    style={{ display: 'flex', alignItems: 'center' }}
+                  >
+                    <ArrowBackIcon width="32px" /> <Heading as="h2">Back</Heading>
                   </IconButton>
                 ))}
               {/* {typeof title === 'string' ? <Heading as="h2">{title}</
               Heading> : title} */}
-              <Heading as="h2">Back</Heading>
+
               {helper && <QuestionHelper text={helper} ml="4px" placement="top" />}
             </BackBtnWrapper>
             <Flex>{center}</Flex>

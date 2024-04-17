@@ -43,6 +43,13 @@ export const StyledUserMenu2 = styled(Flex)`
   &:hover {
     opacity: 0.65;
   }
+
+  @media (max-width: 767px) {
+    border-radius: 8px;
+    padding-left: 12px;
+    padding-right: 4px;
+    height: 44px;
+  }
 `;
 
 export const LabelText = styled.div`

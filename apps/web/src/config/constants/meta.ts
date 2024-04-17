@@ -20,12 +20,12 @@ const getPathList = (t: ContextApi['t']): PathList => {
       '/': { title: t('Home') },
       '/swap': { basePath: true, title: 'Swap', image: `${process.env.NEXT_PUBLIC_ISWAP_URL}/images/seo.png` },
       // '/limit-orders': { basePath: true, title: t('Limit Orders'), image: `${ASSET_CDN}/web/og/limit.jpg` },
-      '/add': {
+      '/liquidity/add': {
         basePath: true,
         title: t('Add Liquidity'),
         image: `${process.env.NEXT_PUBLIC_ISWAP_URL}/images/seo.png`,
       },
-      '/remove': {
+      '/liquidity/remove': {
         basePath: true,
         title: t('Remove Liquidity'),
         image: `${process.env.NEXT_PUBLIC_ISWAP_URL}/images/seo.png`,

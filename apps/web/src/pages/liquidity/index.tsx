@@ -331,19 +331,6 @@ export default function PoolListPage() {
         />
         <Body>
           {mainSection}
-          {selectedTypeIndex === FILTER.V2 ? (
-            <>
-              <Liquidity.FindOtherLP>
-                {chainId && V3_MIGRATION_SUPPORTED_CHAINS.includes(chainId) && (
-                  <Link style={{ marginTop: '8px' }} href="/migration">
-                    <Button id="migration-link" variant="secondary" scale="sm">
-                      {t('Migrate to V3')}
-                    </Button>
-                  </Link>
-                )}
-              </Liquidity.FindOtherLP>
-            </>
-          ) : null}
           {showAllPositionButton && (
             <Flex alignItems="center" flexDirection="column">
               <Text color="textSubtle" mb="10px">
@@ -356,7 +343,7 @@ export default function PoolListPage() {
           )}
         </Body>
         <CardFooter style={{ textAlign: 'center' }}>
-          <NextLink href="/add" passHref>
+          <NextLink href="/liquidity/add" passHref>
             <Button id="join-pool-button" width="100%" startIcon={<AddIcon color="invertedContrast" />}>
               {t('Add Liquidity')}
             </Button>

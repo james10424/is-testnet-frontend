@@ -81,12 +81,12 @@ const TabContainer = ({ children, docLink, docText }: PropsWithChildren<{ docLin
 
   return (
     <AtomBox position="relative" zIndex="modal" className={modalWrapperClass}>
-      <AtomBox position="absolute" style={{ top: '-50px' }}>
+      {/* <AtomBox position="absolute" style={{ top: '-50px' }}>
         <TabMenu activeIndex={index} onItemClick={setIndex} gap="0px" isColorInverse isShowBorderBottom={false}>
           <Tab>{t('Connect Wallet')}</Tab>
           <Tab>{t('What’s a Web3 Wallet?')}</Tab>
         </TabMenu>
-      </AtomBox>
+      </AtomBox> */}
       <AtomBox
         display="flex"
         position="relative"
@@ -99,12 +99,13 @@ const TabContainer = ({ children, docLink, docText }: PropsWithChildren<{ docLin
         zIndex="modal"
         width="100%"
       >
-        {index === 0 && children}
+        {children}
+        {/* {index === 0 && children}
         {index === 1 && (
           <Suspense>
             <StepIntro docLink={docLink} docText={docText} />
           </Suspense>
-        )}
+        )} */}
       </AtomBox>
     </AtomBox>
   )
@@ -156,7 +157,7 @@ function MobileModal<T>({
           )}
         </Text>
       )}
-      <AtomBox flex={1} py="16px" style={{ maxHeight: '230px' }} overflow="auto">
+      <AtomBox flex={1} py="16px" style={{ maxHeight: '230px' }} overflow="auto" justifyContent={'center'}>
         <WalletSelect
           displayCount={MOBILE_DEFAULT_DISPLAY_COUNT}
           wallets={walletsToShow}
@@ -295,6 +296,8 @@ function sortWallets<T>(wallets: WalletConfigV2<T>[], lastUsedWalletName: string
   return [foundLastUsedWallet, ...sorted.filter((w) => w.id !== foundLastUsedWallet.id)]
 }
 
+const WALLETS_ALLOWED = ['metamask', 'walletconnect', 'trust']
+
 function DesktopModal<T>({
   wallets: wallets_,
   connectWallet,
@@ -304,7 +307,10 @@ function DesktopModal<T>({
   connectWallet: (wallet: WalletConfigV2<T>) => void
 }) {
   const wallets: WalletConfigV2<T>[] = wallets_.filter((w) => {
-    return w.installed !== false || (!w.installed && (w.guide || w.downloadLink || w.qrCode))
+    return (
+      (w.installed !== false || (!w.installed && (w.guide || w.downloadLink || w.qrCode))) &&
+      WALLETS_ALLOWED.includes(w.id)
+    )
   })
 
   const [selected] = useSelectedWallet<T>()
@@ -355,7 +361,7 @@ function DesktopModal<T>({
           }}
         />
       </AtomBox>
-      <AtomBox
+      {/* <AtomBox
         flex={1}
         mx="24px"
         display={{
@@ -383,7 +389,7 @@ function DesktopModal<T>({
           )}
           {selected && selected.installed === false && <NotInstalled qrCode={qrCode} wallet={selected} />}
         </AtomBox>
-      </AtomBox>
+      </AtomBox> */}
     </>
   )
 }

@@ -1,6 +1,6 @@
 import { useIsMounted } from "@pancakeswap/hooks";
 import throttle from "lodash/throttle";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { createElement, useEffect, useMemo, useRef, useState } from "react";
 import { styled } from "styled-components";
 import { AtomBox } from "../../components/AtomBox";
 import { Box } from "../../components/Box";
@@ -11,6 +11,9 @@ import { useMatchBreakpoints } from "../../contexts";
 import { MENU_HEIGHT, TOP_BANNER_HEIGHT, TOP_BANNER_HEIGHT_MOBILE } from "./config";
 import { MenuContext } from "./context";
 import { NavProps } from "./types";
+import { MenuItemsType } from ".";
+import MenuItem from "../../components/MenuItem";
+import isTouchDevice from "../../util/isTouchDevice";
 
 const Wrapper = styled.div`
   position: relative;
@@ -68,6 +71,52 @@ const Inner = styled.div`
   transition: margin-top 0.2s, margin-left 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translate3d(0, 0, 0);
   max-width: 100%;
+`;
+
+const BottomNavWrapper = styled.div`
+  position: fixed;
+  bottom: 0;
+  background-color: #23204e;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 40px;
+
+  @media (min-width: 767px) {
+    display: none;
+  }
+`;
+
+const BottomNav = ({ links, activeItem }: { links: MenuItemsType[]; activeItem?: string }) => {
+  return (
+    <BottomNavWrapper>
+      {links.map(({ label, items: menuItems = [], href, icon, fillIcon, disabled }) => {
+        const isActive = activeItem === href;
+        const linkProps = isTouchDevice() && menuItems && menuItems.length > 0 ? {} : { href };
+        if (href === undefined) {
+          return null;
+        }
+        return (
+          <MenuItem {...linkProps} isActive={isActive} isDisabled={disabled}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "5px", alignItems: "center" }}>
+              {icon && createElement((isActive ? fillIcon : icon) as any)}
+              {label}
+            </div>
+          </MenuItem>
+        );
+      })}
+    </BottomNavWrapper>
+  );
+};
+
+const LogoWrapper = styled.img`
+  width: 100px;
+  height: 40px;
+
+  @media (max-width: 767px) {
+    width: 90px;
+    height: 40px;
+  }
 `;
 
 const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
@@ -145,12 +194,12 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
       >
         <Wrapper>
           <FixedContainer showMenu={showMenu} height={totalTopMenuHeight}>
-            {banner && isMounted && <TopBannerContainer height={topBannerHeight}>{banner}</TopBannerContainer>}
+            {/* {banner && isMounted && <TopBannerContainer height={topBannerHeight}>{banner}</TopBannerContainer>} */}
             <StyledNav>
               <Flex>
                 {/* <Logo href={homeLink?.href ?? "/"} /> */}
                 <a href="/swap">
-                  <img src="/images/iswap-logo.svg" width={100} height={40} alt="logo" />
+                  <LogoWrapper src="/images/iswap-logo.svg" alt="logo" />
                 </a>
                 <AtomBox display={{ xs: "none", md: "block" }}>
                   <MenuItems items={links} activeItem={activeItem} activeSubItem={activeSubItem} ml="24px" />
@@ -174,7 +223,7 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
               </Flex>
             </StyledNav>
           </FixedContainer>
-          {subLinks ? (
+          {/* {subLinks ? (
             <Flex justifyContent="space-around" overflow="hidden">
               <SubMenuItems
                 items={subLinksWithoutMobile}
@@ -193,10 +242,11 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
             </Flex>
           ) : (
             <div />
-          )}
-          <BodyWrapper mt={!subLinks ? `${totalTopMenuHeight + 1}px` : "0"}>
+          )} */}
+          <BodyWrapper mt={!subLinks ? `${totalTopMenuHeight + 1}px` : "0"} mb="3rem">
             <Inner>{children}</Inner>
           </BodyWrapper>
+          <BottomNav links={links} activeItem={activeItem} />
         </Wrapper>
       </AtomBox>
       {/* <Footer

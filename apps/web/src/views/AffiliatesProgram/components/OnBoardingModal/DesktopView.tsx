@@ -8,7 +8,7 @@ import Congratulations from './Congratulations'
 import StepIntro from './StepIntro'
 
 const Container = styled(Flex)`
-  width: 792px;
+  // width: 792px;
   padding: 24px;
   border-radius: ${({ theme }) => theme.radii.card};
   background: ${({ theme }) => theme.colors.gradientCardHeader};

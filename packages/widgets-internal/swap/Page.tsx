@@ -35,7 +35,7 @@ export const SwapPage = ({
   <AtomBox
     as={Wrapper}
     className={SwapCSS.pageVariants({ removePadding, noMinHeight })}
-    style={{ paddingTop: "50px" }}
+    style={{ padding: "50px 16px" }}
     {...props}
   >
     {children}
