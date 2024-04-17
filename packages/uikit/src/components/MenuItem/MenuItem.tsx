@@ -45,6 +45,9 @@ const MenuItem: React.FC<React.PropsWithChildren<MenuItemProps>> = ({
         $isDisabled={isDisabled}
         $variant={variant}
         $statusColor={statusColor}
+        onClick={() => {
+          console.log("click");
+        }}
         {...props}
       >
         {children}

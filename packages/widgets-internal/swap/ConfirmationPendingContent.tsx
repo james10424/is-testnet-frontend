@@ -14,9 +14,7 @@ export function ConfirmationPendingContent({ pendingText }: { pendingText?: stri
   const { t } = useTranslation();
   return (
     <Wrapper>
-      <ConfirmedIcon>
-        <Spinner />
-      </ConfirmedIcon>
+      <ConfirmedIcon>{/* <Spinner /> */}</ConfirmedIcon>
       <AutoColumn gap="12px" justify="center">
         {pendingText ? (
           <>
