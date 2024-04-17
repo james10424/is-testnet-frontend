@@ -38,9 +38,9 @@ const NotFound = ({
     <>
       {children}
       <StyledNotFound>
-        <LogoIcon width="64px" mb="8px" />
+        {/* <LogoIcon width="64px" mb="8px" /> */}
         <Heading scale="xxl">{statusCode}</Heading>
-        <Text mb="16px">{t("Oops, page not found.")}</Text>
+        <Text mb="16px">page not found</Text>
         {linkElement}
       </StyledNotFound>
     </>

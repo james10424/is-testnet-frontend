@@ -17,15 +17,13 @@ export const ApproveModalContentV1: React.FC<ApproveModalContentProps> = ({ titl
   return (
     <Box width="100%">
       <Box mb="16px">
-        <ColumnCenter>
-          <Spinner />
-        </ColumnCenter>
+        <ColumnCenter>{/* <Spinner /> */}</ColumnCenter>
       </Box>
       <AutoColumn gap="12px" justify="center">
         <Text bold textAlign="center">
           {title}
         </Text>
-        <Flex>
+        {/* <Flex>
           <Text fontSize="14px">{t("Swapping thru:")}</Text>
           {isMM ? (
             <Text ml="4px" fontSize="14px">
@@ -43,7 +41,7 @@ export const ApproveModalContentV1: React.FC<ApproveModalContentProps> = ({ titl
               {tooltipVisible && tooltip}
             </>
           )}
-        </Flex>
+        </Flex> */}
       </AutoColumn>
     </Box>
   );

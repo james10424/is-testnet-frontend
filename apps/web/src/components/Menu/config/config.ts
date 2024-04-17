@@ -77,7 +77,7 @@ const config: (
     },
     {
       label: 'Pools',
-      href: '/liquidity-pools',
+      href: '/liquidity',
       icon: EarnIcon,
       fillIcon: EarnFillIcon,
       image: '/images/decorations/pe2.png',
