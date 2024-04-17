@@ -262,12 +262,7 @@ export function useDefaultsFromURLSearch():
 
   useEffect(() => {
     if (!chainId || !native || !isReady) return
-    const parsed = queryParametersToSwapState(
-      query,
-      native.symbol,
-      CAKE[chainId]?.address ?? STABLE_COIN[chainId]?.address ?? USDC[chainId]?.address ?? USDT[chainId]?.address,
-    )
-
+    const parsed = queryParametersToSwapState(query, native.symbol, USDT[chainId]?.address) ?? USDC[chainId]?.address
     dispatch(
       replaceSwapState({
         typedValue: parsed.typedValue,

@@ -36,7 +36,7 @@ const AptosChain = {
 const NetworkSelect = ({ switchNetwork, chainId }) => {
   const { t } = useTranslation()
   const [showTestnet] = useUserShowTestnet()
-  const supported = [11155111, 280, 421614, 59140, 84532]
+  const supported = [1, 42161, 11155111, 280, 421614, 59140, 84532]
   return (
     <>
       <Box px="16px" py="8px">
@@ -45,7 +45,9 @@ const NetworkSelect = ({ switchNetwork, chainId }) => {
       <UserMenuDivider />
       {chains
         .filter((chain) => {
-          // if (chain.id === chainId) return true
+          if (!('testnet' in chain) && supported.includes(chain.id)) {
+            return true // enable Eth Arb
+          }
           if ('testnet' in chain && chain.testnet && supported.includes(chain.id)) {
             return showTestnet
           }
@@ -105,7 +107,7 @@ const WrongNetworkSelect = ({ switchNetwork, chainId }) => {
   const localChainId = useLocalNetworkChain() || ChainId.ETHEREUM
   const [, setSessionChainId] = useSessionChainId()
 
-  const localChainName = chains.find((c) => c.id === localChainId)?.name ?? 'BSC'
+  const localChainName = chains.find((c) => c.id === localChainId)?.name ?? 'Ethereum'
 
   const [ref1, isHover] = useHover<HTMLButtonElement>()
 
