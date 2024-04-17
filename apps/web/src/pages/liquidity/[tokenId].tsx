@@ -617,7 +617,7 @@ export default function PoolPage() {
                   )}
                 </>
               )}
-              {farmingTips}
+              {/* {farmingTips} */}
               <AutoRow>
                 <Flex
                   alignItems="center"
