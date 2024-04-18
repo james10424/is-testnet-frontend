@@ -110,11 +110,11 @@ const BottomNav = ({ links, activeItem }: { links: MenuItemsType[]; activeItem?:
 };
 
 const LogoWrapper = styled.img`
-  width: 100px;
+  width: 130px;
   height: 40px;
 
   @media (max-width: 767px) {
-    width: 90px;
+    width: 130px;
     height: 40px;
   }
 `;
@@ -196,10 +196,10 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
           <FixedContainer showMenu={showMenu} height={totalTopMenuHeight}>
             {/* {banner && isMounted && <TopBannerContainer height={topBannerHeight}>{banner}</TopBannerContainer>} */}
             <StyledNav>
-              <Flex>
+              <Flex alignItems={"center"}>
                 {/* <Logo href={homeLink?.href ?? "/"} /> */}
-                <a href="/swap">
-                  <LogoWrapper src="/images/iswap-logo.svg" alt="logo" />
+                <a href="/swap" style={{ height: "auto" }}>
+                  <LogoWrapper src="/images/logo.png" alt="logo" />
                 </a>
                 <AtomBox display={{ xs: "none", md: "block" }}>
                   <MenuItems items={links} activeItem={activeItem} activeSubItem={activeSubItem} ml="24px" />

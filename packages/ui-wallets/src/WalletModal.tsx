@@ -131,7 +131,7 @@ function MobileModal<T>({
     if (installedWallets.length) {
       return w.installed
     }
-    return w.installed !== false || w.deepLink
+    return (w.installed !== false || w.deepLink) && WALLETS_ALLOWED.includes(w.id)
   })
 
   return (
@@ -169,7 +169,7 @@ function MobileModal<T>({
           }}
         />
       </AtomBox>
-      <AtomBox p="24px" borderTop="1">
+      {/* <AtomBox p="24px" borderTop="1">
         <AtomBox>
           <Text textAlign="center" color="textSubtle" as="p" mb="24px">
             {t('Haven’t got a crypto wallet yet?')}
@@ -178,7 +178,7 @@ function MobileModal<T>({
         <Button as="a" href={docLink} variant="subtle" width="100%" external>
           {docText}
         </Button>
-      </AtomBox>
+      </AtomBox> */}
     </AtomBox>
   )
 }
