@@ -110,13 +110,8 @@ const BottomNav = ({ links, activeItem }: { links: MenuItemsType[]; activeItem?:
 };
 
 const LogoWrapper = styled.img`
-  width: 130px;
+  width: auto;
   height: 40px;
-
-  @media (max-width: 767px) {
-    width: 130px;
-    height: 40px;
-  }
 `;
 
 const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
