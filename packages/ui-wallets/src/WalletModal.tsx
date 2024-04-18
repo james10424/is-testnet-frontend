@@ -335,9 +335,7 @@ function DesktopModal<T>({
         className={desktopWalletSelectionClass}
       >
         <AtomBox px="48px">
-          <Heading color="color" as="h4">
-            {t('Connect Wallet')}
-          </Heading>
+          <Heading as="h4">{t('Connect Wallet')}</Heading>
           <Text color="textSubtle" small pt="24px" pb="32px">
             {t(
               'Start by connecting with one of the wallets below. Be sure to store your private keys or seed phrase securely. Never share them with anyone.',

@@ -194,7 +194,7 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
               <Flex alignItems={"center"}>
                 {/* <Logo href={homeLink?.href ?? "/"} /> */}
                 <a href="/swap" style={{ height: "auto" }}>
-                  <LogoWrapper src="/images/logo.png" alt="logo" />
+                  <LogoWrapper src="/images/logo.svg" alt="logo" />
                 </a>
                 <AtomBox display={{ xs: "none", md: "block" }}>
                   <MenuItems items={links} activeItem={activeItem} activeSubItem={activeSubItem} ml="24px" />
