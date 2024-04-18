@@ -131,7 +131,7 @@ function MobileModal<T>({
     if (installedWallets.length) {
       return w.installed
     }
-    return (w.installed !== false || w.deepLink) && WALLETS_ALLOWED.includes(w.id)
+    return (w.installed !== false || w.deepLink) && WALLETS_ALLOWED_MOBILE.includes(w.id)
   })
 
   return (
@@ -297,6 +297,7 @@ function sortWallets<T>(wallets: WalletConfigV2<T>[], lastUsedWalletName: string
 }
 
 const WALLETS_ALLOWED = ['metamask', 'walletconnect', 'trust']
+const WALLETS_ALLOWED_MOBILE = ['walletconnect']
 
 function DesktopModal<T>({
   wallets: wallets_,
